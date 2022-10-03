@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   HomeBtn,
   HomeContainer,
@@ -11,21 +10,6 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   document.title = "JoinMonie | Home";
-
-  const options = {
-    method: "POST",
-    url: "https://joinmonie.herokuapp.com/v1/login",
-    data: "email=hivendtech%40gmail.com&password=warsaw124",
-  };
-
-  axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
 
   return (
     <HomeContainer>
