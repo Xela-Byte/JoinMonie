@@ -5,7 +5,7 @@ import {
   HomeContentText,
   HomeImgContainer,
 } from "../styled/Home";
-import HomeImage from "../assets/images/home-d-img.jpg";
+import HomeImage from "../assets/images/verify.svg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
