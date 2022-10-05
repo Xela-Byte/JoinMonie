@@ -26,14 +26,14 @@ const Navbar = () => {
       {showNavbar && (
         <NavbarContainer>
           <NavbarIcon src={ArrowRight} onClick={() => handleShowNavbar()} />
-          <NavbarTab>
+          <NavbarTab onClick={() => navigate("/how-it-works")}>
             <NavbarTabIconContainer>
               <img src={Info} alt="" />
             </NavbarTabIconContainer>
             <p>how it works</p>
             <NavbarIcon src={ArrowRight} alt="" />
           </NavbarTab>
-          <NavbarTab>
+          <NavbarTab onClick={() => navigate("/trust-and-safety")}>
             <NavbarTabIconContainer>
               <img src={Warning} alt="" />
             </NavbarTabIconContainer>

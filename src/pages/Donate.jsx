@@ -18,14 +18,8 @@ import FlutterWave from "../assets/images/flutterwave.svg";
 import PayPal from "../assets/images/paypal.png";
 import PayStack from "../assets/images/paystack.svg";
 import { useState } from "react";
-import {
-  CreateCampaignSuccessBtn,
-  CreateCampaignSuccessIcon,
-  CreateCampaignSucess,
-  CreateCampaignSucessContainer,
-} from "../styled/CreateCampaign";
+
 import { useNavigate } from "react-router-dom";
-import Correct from "../assets/images/correct.svg";
 
 const Donate = () => {
   const navigate = useNavigate();
@@ -33,34 +27,18 @@ const Donate = () => {
   const handleShowInputAmount = () => {
     setShowInputAmount(!showInputAmount);
   };
-  const [showSuccess, setShowSuccess] = useState(false);
-  const handleShowSuccess = () => {
-    setShowSuccess(true);
-  };
+
   const [number, setNumber] = useState(0);
   const handleSetNumber = (amount) => {
     if (number === 0) {
-      setNumber(amount)
+      setNumber(amount);
     }
     if (number !== 0) {
-      setNumber(number + amount)
+      setNumber(number + amount);
     }
-  }
+  };
   return (
     <>
-      {showSuccess && (
-        <CreateCampaignSucessContainer>
-          <CreateCampaignSucess>
-            <CreateCampaignSuccessIcon>
-              <img src={Correct} alt="" />
-            </CreateCampaignSuccessIcon>
-            <p>Thank you for donating.</p>
-            <CreateCampaignSuccessBtn onClick={() => navigate("/dashboard")}>
-              Back to Home
-            </CreateCampaignSuccessBtn>
-          </CreateCampaignSucess>
-        </CreateCampaignSucessContainer>
-      )}
       <DonateContainer>
         <DonateHeader>
           <img src={ArrowRight} alt="" />
@@ -142,7 +120,7 @@ const Donate = () => {
                 0
               </DonateAmountNumber>
             </DonateAmountNumberContainer>
-            <DonateMakeBtn onClick={() => handleShowSuccess()}>
+            <DonateMakeBtn onClick={() => navigate("/donate/success")}>
               Make Donation
             </DonateMakeBtn>
           </DonateAmountContainer>

@@ -18,6 +18,9 @@ import CampaignDetails from "./pages/CampaignDetails";
 import Donate from "./pages/Donate";
 import FAQ from "./pages/FAQ";
 import Notifications from "./pages/Notifications";
+import HowItWorks from "./pages/HowItWorks";
+import TrustAndSafety from "./pages/TrustAndSafety";
+import DonateSuccess from "./components/DonateSuccess";
 
 const App = () => {
   return (
@@ -39,7 +42,10 @@ const App = () => {
         <Route path="campaign-details" element={<CampaignDetails />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="donate" element={<Donate />} />
+        <Route path="donate/success" element={<DonateSuccess />} />
         <Route path="notifications" element={<Notifications />} />
+        <Route path="how-it-works" element={<HowItWorks />} />
+        <Route path="trust-and-safety" element={<TrustAndSafety />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

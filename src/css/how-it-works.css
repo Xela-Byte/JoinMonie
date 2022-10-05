@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pure-white: #ffffff;
+  --black: #000000;
+  --light-blue: #99ffff;
+  --blue-blue: #0707e0;
+  --light-pink: #ff99ff;
+  --scrim-purple: #8704b3;
+}
+
+.container {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: var(--blue-blue);
+  margin: 1em;
+  padding: 1.4em;
+  overflow: hidden;
+}
+
+nav i {
+  color: var(--blue-blue);
+  cursor: pointer;
+}
+
+nav h2 {
+  color: var(--blue-blue);
+  font-size: 1.5em;
+  margin-bottom: 0;
+  margin: 2em;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.content .showcase {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+
+.showcase .hero img {
+  max-width: 250px;
+  position: relative;
+  left: 200px;
+}
+
+.showcase .hero h3.text-hero {
+  font-size: 2em;
+  font-weight: 500;
+  text-align: center;
+  color: var(--blue-blue);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.showcase .hero p.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: center;
+  color: var(--black);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  margin: 1em;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: var(--blue-blue);
+    margin: 1em;
+    padding: 1em;
+    overflow: hidden;
+  }
+
+  nav i {
+    color: var(--blue-blue);
+    cursor: pointer;
+  }
+
+  nav h2 {
+    color: var(--blue-blue);
+    font-size: 1.5em;
+    margin-bottom: 0;
+    margin: 1em;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+  }
+
+  .content .showcase {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .showcase .hero img {
+    max-width: 250px;
+    position: relative;
+    left: 100px;
+  }
+
+  .showcase .hero h3.text-hero {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--blue-blue);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+  }
+
+  .showcase .hero p.lead {
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    color: var(--black);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    margin: 0.5em;
+  }
+}
