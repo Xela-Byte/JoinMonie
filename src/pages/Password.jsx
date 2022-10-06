@@ -101,9 +101,6 @@ const Password = () => {
           }, 5000);
         })
         .catch((err) => {
-          if (err) {
-            toast.error(err.response.data.message);
-          }
           console.log(err);
           setIsLoading(false);
         });
