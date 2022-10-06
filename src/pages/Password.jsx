@@ -92,6 +92,9 @@ const Password = () => {
           toast.success(res.data.message);
         })
         .then(() => {
+          toast.success(
+            "An email has been sent to your mail, please check it for verification. If you don't verify your account, you won't be able to create a campaign."
+          );
           navigate("/upload-image");
         })
         .catch((err) => {
@@ -100,7 +103,6 @@ const Password = () => {
         });
     }
   };
-
 
   return (
     <>
