@@ -85,6 +85,7 @@ const Login = () => {
           navigate("/dashboard");
         })
         .catch((err) => {
+          toast.error(err.response.data.message);
           setIsLoading(false);
         });
     }
