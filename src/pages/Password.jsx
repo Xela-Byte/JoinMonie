@@ -102,7 +102,7 @@ const Password = () => {
           }, 5000);
         })
         .catch((err) => {
-          toast.error(err.response.data.message);
+          toast.error("Something went wrong!");
           setIsLoading(false);
         });
     }
