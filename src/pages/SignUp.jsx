@@ -16,7 +16,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { countryNames } from "../utils/countryName";
 import { currencyLists } from "../utils/currencyList";
-import { useEffect } from "react";
 
 const SignUp = () => {
   // ******** //
@@ -119,12 +118,6 @@ const SignUp = () => {
       navigate("/set-password");
     }
   };
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("JoinMonie")) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
 
   return (
     <>
