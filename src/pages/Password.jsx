@@ -89,7 +89,6 @@ const Password = () => {
         })
         .then((res) => {
           console.log(res.data);
-          toast.success(res.data.message);
         })
         .then(() => {
           toast.success(
@@ -103,6 +102,7 @@ const Password = () => {
         })
         .catch((err) => {
           toast.error("Something went wrong!");
+          console.log(err);
           setIsLoading(false);
         });
     }
