@@ -66,7 +66,7 @@ const Password = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+
     if (handleValidation()) {
       const {
         fullName,
@@ -95,7 +95,11 @@ const Password = () => {
           toast.success(
             "An email has been sent to your mail, please check it for verification. If you don't verify your account, you won't be able to create a campaign."
           );
-          navigate("/upload-image");
+        })
+        .then(() => {
+          setTimeout(() => {
+            navigate("/upload-image");
+          }, 5000);
         })
         .catch((err) => {
           toast.error(err.response.data.message);

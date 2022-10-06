@@ -120,11 +120,11 @@ const SignUp = () => {
     }
   };
 
-  useEffect(() => {
-    if (values) {
-      navigate("/login");
-    }
-  }, [values, navigate]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("JoinMonie")) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate]);
 
   return (
     <>
