@@ -33,7 +33,6 @@ const Dashboard = () => {
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
-  console.log("dashboard", showNavbar);
 
   return (
     <>
