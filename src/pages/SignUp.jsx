@@ -15,7 +15,6 @@ import "react-dropdown/style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { countryNames } from "../utils/countryName";
-import { currencyLists } from "../utils/currencyList";
 
 const SignUp = () => {
   // ******** //
@@ -28,29 +27,6 @@ const SignUp = () => {
 
   const [values, setValues] = useState({});
   let navigate = useNavigate();
-
-  // Array Modifications
-
-  let currencyCode = currencyLists.sort(function (a, b) {
-    if (a.currency_code === null) {
-      a.currency_code = "NGN";
-    }
-    if (b.currency_code === null) {
-      b.currency_code = "NGN";
-    }
-    var textA = a.currency_code.toUpperCase();
-    var textB = b.currency_code.toUpperCase();
-    return textA < textB ? -1 : textA > textB ? 1 : 0;
-  });
-
-  let currencyCodeList = Object.values(
-    currencyCode.reduce((r, o) => {
-      if (!r[o.currency_code] || r[o.currency_code].country === o.country) {
-        r[o.currency_code] = o;
-      }
-      return r;
-    }, {})
-  );
 
   // Toast Props For Success And Error Notification
 
@@ -73,6 +49,21 @@ const SignUp = () => {
     currency: "currency",
   };
 
+  const currencyCodeList = [
+    {
+      name: "Pound",
+      currency_code: "EUR",
+    },
+    {
+      name: "Naira",
+      currency_code: "NGN",
+    },
+    {
+      name: "Dollar",
+      currency_code: "USD",
+    },
+  ];
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -92,11 +83,14 @@ const SignUp = () => {
   };
 
   const handleValidation = () => {
-    const { fullName, email, country, currency, DOB } = values;
+    let { fullName, email, country, currency, DOB } = values;
+    DOB = DOB.slice(0, 4);
+    let yearNum = Number(DOB);
+    let presentYear = new Date().getFullYear();
+    let validBirthYear = presentYear - yearNum;
 
     if (!fullName || !email || !country || !currency || !DOB) {
       toast.error(`Please Fill All Fields.`, ToastifyProps);
-
       return false;
     }
     if (fullName.length < 6) {
@@ -105,6 +99,10 @@ const SignUp = () => {
     }
     if (!email.includes("@") || !email.includes(".") || email.length < 8) {
       toast.error("Email is invalid.");
+      return false;
+    }
+    if (validBirthYear < 18) {
+      toast.error("You're not eligible to register.");
       return false;
     } else {
       localStorage.setItem("JoinMonie", JSON.stringify(values));
