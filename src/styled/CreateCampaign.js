@@ -124,6 +124,7 @@ export const CreateCampaignDisplayImage = styled.div`
   width: 100%;
   background: rgba(7, 7, 224, 0.3);
   height: 30%;
+  min-height: 200px;
   margin-bottom: 60%;
   ${Centering};
   border-radius: 20px;

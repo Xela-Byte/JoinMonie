@@ -7,8 +7,13 @@ import {
 } from "../styled/Campaigns";
 import NoCampaign from "../assets/images/warning.svg";
 import { useNavigate } from "react-router-dom";
+
 const Campaigns = () => {
+  document.title = "JoinMonie | Campaigns";
+
+  // Hooks
   const navigate = useNavigate();
+  
   return (
     <>
       <CampaignStyledContainer>
