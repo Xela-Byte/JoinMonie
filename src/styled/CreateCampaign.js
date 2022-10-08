@@ -3,7 +3,7 @@ import { Centering, colors } from "./UniversalStyles";
 
 export const CreateCampaignContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  overflow: scroll;
   position: relative;
   color: ${colors.blue};
   padding: 5%;
@@ -16,7 +16,8 @@ export const CreateCampaignContainer = styled.div`
 
 export const CreateCampaignHeader = styled.div`
   width: 100%;
-  height: 8%;
+  height: 10%;
+  margin-top: 5%;
   color: ${colors.blue};
   ${Centering};
   gap: 5%;
@@ -35,7 +36,8 @@ export const CreateCampaignHeader = styled.div`
 
 export const CreateCampaignForm = styled.form`
   width: 100%;
-  height: 90%;
+  height: 85%;
+  margin-bottom: 5%;
   .dropdown-campaign {
     border: 1px solid ${colors.blue};
     margin-bottom: 20px;
@@ -49,10 +51,33 @@ export const CreateCampaignInput = styled.input`
   width: 100%;
   padding: 1rem;
   border: 1px solid ${colors.blue};
+  outline: none;
   margin-bottom: 20px;
   background: transparent;
+  transition: 0.4s ease-in-out;
   &::placeholder {
     color: ${colors.blue};
+  }
+  &:focus {
+    scale: 1.02;
+    border: 1px solid #0101ac;
+  }
+`;
+
+export const CreateCampaignText = styled.textarea`
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid ${colors.blue};
+  outline: none;
+  margin-bottom: 20px;
+  background: transparent;
+  transition: 0.4s ease-in-out;
+  &::placeholder {
+    color: ${colors.blue};
+  }
+  &:focus {
+    scale: 1.02;
+    border: 1px solid #0101ac;
   }
 `;
 
@@ -68,11 +93,19 @@ export const CreateCampaignBtn = styled.button`
 
 export const CreateCampaignEmailContent = styled.div`
   width: 100%;
-  height: 70%;
-  padding-top: 10%;
+  height: 100vh;
+  ${Centering}
+  padding: 5%;
+  flex-direction: column;
   & > label {
     color: ${colors.black};
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  & > img {
+    width: 20px;
+    height: 20px;
+    margin-right: auto;
+    transform: rotate(180deg);
   }
 `;
 
@@ -88,16 +121,21 @@ export const CreateCampaignEmailInput = styled.input`
 `;
 
 export const CreateCampaignDisplayImage = styled.div`
-  width: 85%;
-  margin: auto;
+  width: 100%;
   background: rgba(7, 7, 224, 0.3);
-  height: 45%;
+  height: 30%;
   margin-bottom: 60%;
   ${Centering};
   border-radius: 20px;
   & > p {
     font-size: 18px;
     color: ${colors.white};
+  }
+  & > img {
+    width: 100%;
+    border-radius: 20px;
+    height: 100%;
+    object-fit: auto;
   }
 `;
 

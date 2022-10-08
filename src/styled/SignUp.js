@@ -39,6 +39,7 @@ export const SignUpInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 5%;
+  position: relative;
   & > label {
     font-size: calc(${fontSizes.small});
     margin-bottom: 5px;
@@ -51,6 +52,13 @@ export const SignUpInputContainer = styled.div`
   }
   & > p {
     font-size: ${fontSizes.small};
+  }
+  & > img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 90%;
+    bottom: 45%;
   }
 `;
 

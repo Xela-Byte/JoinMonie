@@ -78,7 +78,6 @@ const Login = () => {
           password,
         })
         .then((res) => {
-          console.log(res.data);
           localStorage.setItem("JoinMonie-Verify-Token", res.data.token);
         })
         .then(() => {

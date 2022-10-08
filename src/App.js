@@ -21,10 +21,13 @@ import Notifications from "./pages/Notifications";
 import HowItWorks from "./pages/HowItWorks";
 import TrustAndSafety from "./pages/TrustAndSafety";
 import DonateSuccess from "./components/DonateSuccess";
+import ScrollToTop from "./utils/ScrollToTop";
+import CreateCampaignEmailInputComponent from "./components/CreateCampaignEmailInputComponent";
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
@@ -36,6 +39,10 @@ const App = () => {
         <Route index path="campaigns" element={<Campaigns />} />
         <Route index path="profile" element={<Profile />} />
         <Route path="create-campaign" element={<CreateCampaign />} />
+        <Route
+          path="create-campaign/input-email"
+          element={<CreateCampaignEmailInputComponent />}
+        />
         <Route path="profile-details" element={<ProfileDetails />} />
         <Route path="security" element={<Security />} />
         <Route path="withdrawal" element={<Withdrawal />} />

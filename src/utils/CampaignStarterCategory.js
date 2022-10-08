@@ -1,26 +1,46 @@
 export const campaignStarter = [
   {
     id: 1,
-    category: "broke ass nigga",
+    category: "AGRICULTURE",
   },
   {
     id: 2,
-    category: "broke ass nigga",
+    category: "EDUCATION",
   },
   {
     id: 3,
-    category: "broke ass nigga",
+    category: "ENTERTAINMENT",
   },
   {
     id: 4,
-    category: "broke ass nigga",
+    category: "FINANCIAL",
   },
   {
     id: 5,
-    category: "broke ass nigga",
+    category: "HOSPITALITY",
   },
   {
     id: 6,
-    category: "broke ass nigga",
+    category: "HEALTH",
+  },
+  {
+    id: 7,
+    category: "LEISURE",
+  },
+  {
+    id: 8,
+    category: "LOGISTICS",
+  },
+  {
+    id: 9,
+    category: "NON_PROFITS",
+  },
+  {
+    id: 10,
+    category: "TRAVEL",
+  },
+  {
+    id: 11,
+    category: "UTILITIES",
   },
 ];

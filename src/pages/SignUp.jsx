@@ -10,11 +10,13 @@ import {
   SignUpHeaderText,
   SignUpInputContainer,
 } from "../styled/SignUp";
-import { Line } from "../styled/UniversalStyles";
+import { Line, ToastifyProps } from "../styled/UniversalStyles";
 import "react-dropdown/style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { countryNames } from "../utils/countryName";
+import Eye from "../assets/images/eye.svg";
+import EyeSlash from "../assets/images/eye-slash.svg";
 
 const SignUp = () => {
   // ******** //
@@ -29,18 +31,6 @@ const SignUp = () => {
   let navigate = useNavigate();
 
   // Toast Props For Success And Error Notification
-
-  const ToastifyProps = {
-    position: "top-right",
-    autoClose: 5000,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "light",
-    style: {
-      borderRadius: "10px",
-      fontFamily: "Cairo",
-    },
-  };
 
   // Data Retrieval and Validation
 
@@ -94,15 +84,15 @@ const SignUp = () => {
       return false;
     }
     if (fullName.length < 6) {
-      toast.error("Name is too short");
+      toast.error("Name is too short", ToastifyProps);
       return false;
     }
     if (!email.includes("@") || !email.includes(".") || email.length < 8) {
-      toast.error("Email is invalid.");
+      toast.error("Email is invalid.", ToastifyProps);
       return false;
     }
     if (validBirthYear < 18) {
-      toast.error("You're not eligible to register.");
+      toast.error("You're not eligible to register.", ToastifyProps);
       return false;
     } else {
       localStorage.setItem("JoinMonie", JSON.stringify(values));

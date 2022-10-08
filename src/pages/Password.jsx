@@ -15,6 +15,8 @@ import {
 import { Line } from "../styled/UniversalStyles";
 import Loading from "../components/Loading";
 import { registerRoute } from "../utils/APIRoutes";
+import Eye from "../assets/images/eye.svg";
+import EyeSlash from "../assets/images/eye-slash.svg";
 
 const Password = () => {
   // ******** //
@@ -26,8 +28,21 @@ const Password = () => {
 
   // Hooks
   const navigate = useNavigate();
-  const [passwords, setPasswords] = useState({});
+  const [passwords, setPasswords] = useState({
+    password: "",
+    confirmPassword: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Password Reveal
+  const handlePasswordReveal = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleConfirmPasswordReveal = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   // Getting user data from local storage
   let userData = localStorage.getItem("JoinMonie");
@@ -88,7 +103,7 @@ const Password = () => {
           password,
         })
         .then((res) => {
-          console.log(res.data);
+          localStorage.setItem("JoinMonie-Verify-Token", res.data.token);
         })
         .then(() => {
           toast.success(
@@ -107,6 +122,8 @@ const Password = () => {
     }
   };
 
+  const { password, confirmPassword } = passwords;
+
   return (
     <>
       {isLoading && <Loading />}
@@ -122,20 +139,41 @@ const Password = () => {
           <SignUpInputContainer>
             <label htmlFor="password">Password</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               onChange={(e) => handleChange(e)}
+              value={password}
+            />
+            <img
+              src={showPassword ? EyeSlash : Eye}
+              alt=""
+              onClick={() => handlePasswordReveal()}
             />
             <p>Must be at least 8 characters.</p>
           </SignUpInputContainer>
           <SignUpInputContainer>
             <label htmlFor="confirm-password">Confirm Password</label>
             <input
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               onChange={(e) => handleChange(e)}
               autoComplete="new-password"
+              value={confirmPassword}
             />
+            {showConfirmPassword ? (
+              <img
+                src={EyeSlash}
+                alt=""
+                onClick={() => handleConfirmPasswordReveal()}
+              />
+            ) : (
+              <img
+                src={Eye}
+                alt=""
+                onClick={() => handleConfirmPasswordReveal()}
+              />
+            )}
+
             <p>Both passwords must match!</p>
           </SignUpInputContainer>
           <PasswordTC>
