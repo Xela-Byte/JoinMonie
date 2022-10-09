@@ -40,7 +40,7 @@ export const CampaignDetailContent = styled.div`
   width: 100%;
   & > img {
     width: 100%;
-    height: 20%;
+    min-height: 200px;
     border-radius: 10px;
     object-fit: cover;
   }

@@ -71,12 +71,17 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      const { email, password } = values;
-      await axios
-        .post(loginRoute, {
-          email,
-          password,
-        })
+      const data = values;
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const createConfig = {
+        method: "POST",
+        url: loginRoute,
+        headers: headers,
+        data: data,
+      };
+      await axios(createConfig)
         .then((res) => {
           localStorage.setItem("JoinMonie-Verify-Token", res.data.token);
         })

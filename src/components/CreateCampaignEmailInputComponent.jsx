@@ -105,6 +105,9 @@ const CreateCampaignEmailInputComponent = () => {
             navigate("/campaigns");
           }, 3000)
         )
+        .then(() => {
+          localStorage.removeItem("JoinMonie-Campaign");
+        })
         .catch((err) => {
           setLoading(false);
           toast.error(err.response.data.message);

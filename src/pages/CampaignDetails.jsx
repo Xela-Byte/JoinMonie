@@ -13,15 +13,78 @@ import {
 } from "../styled/CampignDetails";
 import ArrowLeft from "../assets/images/arrow-right.svg";
 import Flag from "../assets/images/flag.svg";
-import Sick from "../assets/images/sick.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Person1 from "../assets/images/person-1.jpg";
 import Person2 from "../assets/images/person-2.png";
 import Person3 from "../assets/images/person-3.jpg";
 import Share from "../assets/images/script.svg";
+import { useState } from "react";
+import { getSingleCampaignRoute } from "../utils/APIRoutes";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const CampaignDetails = () => {
+  // Hooks
   const navigate = useNavigate();
+  const [campaign, setCampaign] = useState({});
+  const [searchParams] = useSearchParams();
+  const campaignId = searchParams.get("id");
+
+  // Calling the function whenever window loads.
+  useEffect(() => {
+    // Getting Campaigns
+    const getSingleCampaign = async () => {
+      let token = localStorage.getItem("JoinMonie-Verify-Token");
+      const headers = {
+        Authorization: token,
+      };
+      const getConfig = {
+        method: "GET",
+        url: `${getSingleCampaignRoute}/${campaignId}`,
+        headers: headers,
+      };
+      await axios(getConfig)
+        .then((res) => {
+          setCampaign(res.data.campaign);
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          console.log(err);
+        });
+    };
+    if (document.readyState === "complete") {
+      getSingleCampaign();
+    } else {
+      window.addEventListener("load", () => {
+        getSingleCampaign();
+      });
+      return () =>
+        document.removeEventListener("load", () => {
+          getSingleCampaign();
+        });
+    }
+  }, [campaignId]);
+
+  let {
+    campaignPhoto,
+    campaignName,
+    currentBalance,
+    fundsGoal,
+    email,
+    campaignStory,
+  } = campaign;
+
+  const currencySymbols = ["$"];
+
+  if (fundsGoal) {
+    if (currencySymbols.includes(fundsGoal.toString().charAt(0))) {
+      fundsGoal = fundsGoal.toString().slice(1);
+    }
+  }
+
+  let progress = (Number(currentBalance) / Number(fundsGoal)) * 100;
+
   return (
     <CampaignDetailContainer>
       <CampaignDetailHeader>
@@ -30,9 +93,9 @@ const CampaignDetails = () => {
         <img src={Flag} alt="" />
       </CampaignDetailHeader>
       <CampaignDetailContent>
-        <img src={Sick} alt="" />
-        <p>treatment for the sick</p>
-        <p>Endurance Johnson</p>
+        <img src={campaignPhoto} alt="" />
+        <p>{campaignName}</p>
+        <p>{email}</p>
         <CampaignDetailDonate>
           <div>
             <img src={Person1} alt={"Person"} />
@@ -42,31 +105,27 @@ const CampaignDetails = () => {
           <p>123+ people donated</p>
         </CampaignDetailDonate>
         <CampaignDetailProgressBarContainer>
-          <CampaignDetailProgressBar></CampaignDetailProgressBar>
+          <CampaignDetailProgressBar style={{
+            width: `${progress}%`
+          }}></CampaignDetailProgressBar>
         </CampaignDetailProgressBarContainer>
         <CampaignDetailTrackContainer>
           <CampaignDetailTrack>
-            <p>$18,400</p>
+            <p>{currentBalance}</p>
             <p>Raised</p>
           </CampaignDetailTrack>
           <CampaignDetailTrack>
-            <p>$23,000</p>
+            <p>{fundsGoal}</p>
             <p>Goal</p>
           </CampaignDetailTrack>
           <CampaignDetailTrack>
-            <p>80%</p>
+            <p>{progress}%</p>
             <p>Completed</p>
           </CampaignDetailTrack>
         </CampaignDetailTrackContainer>
         <CampaignDetailAboutContainer>
           <p>About Campaign</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
-            ducimus aliquam ea porro quibusdam repellendus corrupti modi aut
-            mollitia iure deleniti nihil blanditiis, quia nulla veritatis
-            exercitationem quidem, libero delectus eius voluptas animi magni.
-            Unde cum fuga reiciendis voluptatem ad.
-          </p>
+          <p>{campaignStory}</p>
         </CampaignDetailAboutContainer>
         <div
           style={{

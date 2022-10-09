@@ -43,6 +43,11 @@ export const CategoryTab = styled.div`
 export const ExploreCampaignWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  & > p {
+    color: ${colors.blue};
+    font-size: 23px;
+    margin-top: 5%;
+  }
 `;
 
 export const ExploreCampaignContainer = styled.div`

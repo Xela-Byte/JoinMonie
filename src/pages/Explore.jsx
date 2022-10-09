@@ -122,7 +122,7 @@ const Explore = () => {
               return (
                 <ExploreCampaignTab
                   key={_id}
-                  onClick={() => navigate("/campaign-details")}
+                  onClick={() => navigate(`/campaign-details?id=${_id}`)}
                 >
                   <img src={campaignPhoto} alt="" />
                   <ExploreCampaignContent>
