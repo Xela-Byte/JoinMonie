@@ -18,15 +18,17 @@ import FlutterWave from "../assets/images/flutterwave.svg";
 import PayPal from "../assets/images/paypal.png";
 import PayStack from "../assets/images/paystack.svg";
 import { useState } from "react";
-import {  useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { token } from "../utils/Credentials";
 import { allCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 const Donate = () => {
   const [searchParams] = useSearchParams();
   const campaignId = searchParams.get("id");
   const [showInputAmount, setShowInputAmount] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleShowInputAmount = () => {
     setShowInputAmount(!showInputAmount);
   };
@@ -55,6 +57,7 @@ const Donate = () => {
 
   const handlePayment = async () => {
     if (number) {
+      setLoading(true);
       const headers = {
         Authorization: token,
         "Content-Type": "application/json",
@@ -72,11 +75,15 @@ const Donate = () => {
           console.log(res.data);
           window.location.href = res.data;
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+        });
     }
   };
   return (
     <>
+      {loading && <Loading />}
       <DonateContainer>
         <DonateHeader>
           <img src={ArrowRight} alt="" />
