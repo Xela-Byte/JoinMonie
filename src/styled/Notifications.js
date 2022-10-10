@@ -12,7 +12,6 @@ export const NotificationContainer = styled.div`
     text-align: center;
   }
   & > img {
-  transform: rotate(180deg);
   width: 25px;
   height: 25px;
   }

@@ -25,7 +25,6 @@ export const CampaignDetailHeader = styled.div`
   & > img {
     width: 25px;
     height: 25px;
-    transform: rotate(180deg);
     margin-bottom: 2%;
   }
   & > img:last-child {
@@ -40,7 +39,7 @@ export const CampaignDetailContent = styled.div`
   width: 100%;
   & > img {
     width: 100%;
-    min-height: 200px;
+    max-height: 200px;
     border-radius: 10px;
     object-fit: cover;
   }

@@ -14,11 +14,12 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavbarIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   &:first-child {
     align-self: flex-end;
     margin-bottom: 5%;
+    transform: rotate(180deg);
   }
 `;
 
@@ -37,6 +38,9 @@ export const NavbarTab = styled.div`
   }
   & > img {
     margin-left: auto;
+    width: 30px;
+    height: 30px;
+    transform: rotate(180deg);
   }
 `;
 

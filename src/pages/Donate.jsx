@@ -10,15 +10,15 @@ import {
   DonateMethodContainer,
   DonateMethodTab,
 } from "../styled/Donate";
-import ArrowRight from "../assets/images/arrow-right.svg";
-import MasterCard from "../assets/images/mastercard.png";
-import Visa from "../assets/images/visa.png";
-import MoniePoint from "../assets/images/moniepoint.png";
-import FlutterWave from "../assets/images/flutterwave.svg";
-import PayPal from "../assets/images/paypal.png";
+import ArrowRight from "../assets/images/left-arrow.png";
+// import MasterCard from "../assets/images/mastercard.png";
+// import Visa from "../assets/images/visa.png";
+// import MoniePoint from "../assets/images/moniepoint.png";
+// import FlutterWave from "../assets/images/flutterwave.svg";
+// import PayPal from "../assets/images/paypal.png";
 import PayStack from "../assets/images/paystack.svg";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { token } from "../utils/Credentials";
 import { allCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
@@ -29,6 +29,9 @@ const Donate = () => {
   const campaignId = searchParams.get("id");
   const [showInputAmount, setShowInputAmount] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // functionality
   const handleShowInputAmount = () => {
     setShowInputAmount(!showInputAmount);
   };
@@ -86,14 +89,14 @@ const Donate = () => {
       {loading && <Loading />}
       <DonateContainer>
         <DonateHeader>
-          <img src={ArrowRight} alt="" />
+          <img src={ArrowRight} alt="" onClick={() => navigate(-1)} />
           <p>Donate</p>
         </DonateHeader>
         {showInputAmount === false && (
           <>
             <p>Select a preferred payment method </p>
             <DonateMethodContainer>
-              <DonateMethodTab>
+              {/* <DonateMethodTab>
                 <img src={MasterCard} alt="" />
                 <p>Master Card</p>
               </DonateMethodTab>
@@ -108,15 +111,15 @@ const Donate = () => {
               <DonateMethodTab>
                 <img src={FlutterWave} alt="" />
                 <p>Flutter Wave</p>
-              </DonateMethodTab>
+              </DonateMethodTab> */}
               <DonateMethodTab onClick={(e) => handlePayMethod(e)}>
                 <img src={PayStack} alt="" />
                 <p>Paystack</p>
               </DonateMethodTab>
-              <DonateMethodTab>
+              {/* <DonateMethodTab>
                 <img src={PayPal} alt="" />
                 <p>PayPal</p>
-              </DonateMethodTab>
+              </DonateMethodTab> */}
             </DonateMethodContainer>
             <DonateBtn onClick={() => handleShowInputAmount()}>
               Continue

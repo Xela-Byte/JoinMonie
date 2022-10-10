@@ -28,7 +28,7 @@ export const CategoryTabContent = styled.div`
   width: auto;
   overflow-x: scroll;
   display: flex;
-  gap: 5%;
+  gap: 15px;
 `;
 
 export const CategoryTab = styled.div`

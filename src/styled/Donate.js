@@ -20,7 +20,6 @@ export const DonateHeader = styled.div`
   & > img {
     width: 20px;
     height: 20px;
-    transform: rotate(180deg);
   }
   & > p {
     font-size: 18px;
@@ -43,6 +42,8 @@ export const DonateMethodTab = styled.div`
   background: rgba(7, 7, 224, 0.1);
   border-radius: 20px;
   ${Centering}
+  margin-left: 50%;
+  margin-top: 10%;
   flex-direction: column;
   & > img {
     width: 50%;

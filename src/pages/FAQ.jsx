@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FAQContainer, FAQContent, FAQSubContent, FAQTab } from "../styled/FAQ";
-import ArrowDown from "../assets/images/arrow-right.svg";
+import ArrowDown from "../assets/images/left-arrow.png";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Close from "../assets/images/close.svg";
@@ -12,7 +12,7 @@ const FAQ = () => {
   const handleShowContent = () => {
     setShowShowContent(!showContent);
     setShowFAQTab(true);
-  };  
+  };
 
   const handleShowFAQTab = () => {
     setShowFAQTab(!showFAQTab);

@@ -7,9 +7,8 @@ export const ProfileContainer = styled.div`
   padding: 5%;
   & > img {
     margin: 10px;
-    transform: rotate(180deg);
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -73,7 +72,7 @@ export const ProfileTabContent = styled.div`
   }
   & > p:last-child {
     color: ${colors.grey};
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
   }
 `;

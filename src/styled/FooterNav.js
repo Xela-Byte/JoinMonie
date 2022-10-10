@@ -5,10 +5,8 @@ export const FooterNavContainer = styled.div`
   width: 100%;
   height: 70px;
   position: fixed;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   bottom: 0px;

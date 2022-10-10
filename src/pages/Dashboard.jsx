@@ -15,7 +15,7 @@ import {
   TrendingCampaignInfo,
   TrendingCampaignTab,
 } from "../styled/Dashboard";
-import Menu from "../assets/images/menu.svg";
+import Menu from "../assets/images/menu.png";
 import Logo from "../assets/images/logo.png";
 import Bell from "../assets/images/bell.svg";
 import Search from "../assets/images/search.svg";

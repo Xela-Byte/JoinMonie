@@ -16,7 +16,6 @@ export const FAQContainer = styled.div`
   & > img {
     width: 25px;
     height: 25px;
-    transform: rotate(180deg);
     margin-left: auto;
     margin-bottom: 5%;
   }

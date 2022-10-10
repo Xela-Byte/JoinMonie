@@ -5,12 +5,12 @@ import {
   NavbarTab,
   NavbarTabIconContainer,
 } from "../styled/Navbar";
-import ArrowRight from "../assets/images/arrow-right.svg";
+import ArrowRight from "../assets/images/left-arrow.png";
 import Flag from "../assets/images/flag.svg";
-import Info from "../assets/images/info.svg";
-import Script from "../assets/images/script.svg";
-import People from "../assets/images/people.svg";
-import Question from "../assets/images/question.svg";
+import Info from "../assets/images/information-button.png";
+import Script from "../assets/images/terms.png";
+import People from "../assets/images/group.png";
+import Question from "../assets/images/faq.png";
 import Warning from "../assets/images/warning.svg";
 import { useNavigate } from "react-router-dom";
 

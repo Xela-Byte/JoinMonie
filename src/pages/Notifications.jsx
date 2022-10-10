@@ -7,14 +7,14 @@ import {
   OldNotificationTab,
 } from "../styled/Notifications";
 
-import ArrowRight from "../assets/images/arrow-right.svg";
+import ArrowRight from "../assets/images/left-arrow.png";
 
 const Notifications = () => {
   const navigate = useNavigate();
 
   return (
     <NotificationContainer>
-      <img src={ArrowRight} alt="" onClick={()=> navigate(-1)} />
+      <img src={ArrowRight} alt="" onClick={() => navigate(-1)} />
       <p>Notifications</p>
       <NewNotificationContainer>
         <p>New</p>

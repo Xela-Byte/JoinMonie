@@ -15,19 +15,23 @@ import User from "../assets/images/user-copy.svg";
 import Info from "../assets/images/info.svg";
 import Script from "../assets/images/script.svg";
 import Correct from "../assets/images/correct.svg";
-import ArrowRight from "../assets/images/arrow-right.svg";
+import ArrowRight from "../assets/images/left-arrow.png";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
+  let user = localStorage.getItem("JoinMonie-User");
+  user = JSON.parse(user);
+
+  const { fullName, email } = user;
   return (
     <>
       <ProfileContainer>
         <img src={ArrowRight} alt="" onClick={() => navigate(-1)} />
         <ProfileDisplay>
           <img src={ProfileImage} alt="" />
-          <ProfileName>Endurance Johnson</ProfileName>
-          <ProfileEmail>endurancejohnson@gmail.com</ProfileEmail>
+          <ProfileName>{fullName ? fullName : "John Doe"}</ProfileName>
+          <ProfileEmail>{email ? email : "johndoe@gmail.com"}</ProfileEmail>
         </ProfileDisplay>
         <ProfileTabContainer>
           <ProfileTab onClick={() => navigate("/profile-details")}>

@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-dropdown/style.css";
 import { campaignStarter } from "../utils/CampaignStarterCategory";
 import { countryNames } from "../utils/countryName";
-import ArrowLeft from "../assets/images/arrow-right.svg";
+import ArrowLeft from "../assets/images/left-arrow.png";
 import { ToastifyProps } from "../styled/UniversalStyles";
 
 const CreateCampaign = () => {
@@ -53,9 +53,9 @@ const CreateCampaign = () => {
   const handleValidation = () => {
     let { campaignName, campaignStory, country, category, fundsGoal, endDate } =
       values;
-    
+
     // Validtion for Form
-    
+
     if (endDate === undefined) {
       toast.error("Please fill all fields", ToastifyProps);
       return false;
@@ -87,7 +87,6 @@ const CreateCampaign = () => {
     let setEndYear = endDateYear - presentYear;
 
     // Validation
-
 
     if (
       !campaignName ||

@@ -30,7 +30,6 @@ export const CreateCampaignHeader = styled.div`
     width: 20px;
     height: 20px;
     margin-right: auto;
-    transform: rotate(180deg);
   }
 `;
 
@@ -72,6 +71,7 @@ export const CreateCampaignText = styled.textarea`
   margin-bottom: 20px;
   background: transparent;
   transition: 0.4s ease-in-out;
+  font-family: "Poppins", sans-serif;
   &::placeholder {
     color: ${colors.blue};
   }
@@ -89,6 +89,7 @@ export const CreateCampaignBtn = styled.button`
   font-size: 18px;
   background: ${colors.blue};
   color: ${colors.white};
+  margin-bottom: 15px;
 `;
 
 export const CreateCampaignEmailContent = styled.div`
@@ -105,7 +106,6 @@ export const CreateCampaignEmailContent = styled.div`
     width: 20px;
     height: 20px;
     margin-right: auto;
-    transform: rotate(180deg);
   }
 `;
 

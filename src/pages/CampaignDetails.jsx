@@ -11,7 +11,7 @@ import {
   CampaignDetailTrack,
   CampaignDetailTrackContainer,
 } from "../styled/CampignDetails";
-import ArrowLeft from "../assets/images/arrow-right.svg";
+import ArrowLeft from "../assets/images/left-arrow.png";
 import Flag from "../assets/images/flag.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Person1 from "../assets/images/person-1.jpg";
