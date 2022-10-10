@@ -43,6 +43,7 @@ export const CategoryTab = styled.div`
 export const ExploreCampaignWrapper = styled.div`
   width: 100%;
   height: 100vh;
+  position: relative;
   & > p {
     color: ${colors.blue};
     font-size: 23px;

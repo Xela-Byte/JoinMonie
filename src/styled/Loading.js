@@ -4,7 +4,7 @@ import { Centering } from "./UniversalStyles";
 
 export const LoadingContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   background: transparent;
   z-index: 6;

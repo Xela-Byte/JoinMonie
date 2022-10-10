@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import Password from "./pages/Password";
 import UploadImage from "./pages/UploadImage";
@@ -22,7 +21,9 @@ import HowItWorks from "./pages/HowItWorks";
 import TrustAndSafety from "./pages/TrustAndSafety";
 import DonateSuccess from "./components/DonateSuccess";
 import ScrollToTop from "./utils/ScrollToTop";
+import NotFound from "./pages/NotFound";
 import CreateCampaignEmailInputComponent from "./components/CreateCampaignEmailInputComponent";
+import "./utils/Credentials";
 
 const App = () => {
   return (

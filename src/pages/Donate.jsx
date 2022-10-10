@@ -18,11 +18,14 @@ import FlutterWave from "../assets/images/flutterwave.svg";
 import PayPal from "../assets/images/paypal.png";
 import PayStack from "../assets/images/paystack.svg";
 import { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
+import {  useSearchParams } from "react-router-dom";
+import { token } from "../utils/Credentials";
+import { allCampaignRoute } from "../utils/APIRoutes";
+import axios from "axios";
 
 const Donate = () => {
-  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const campaignId = searchParams.get("id");
   const [showInputAmount, setShowInputAmount] = useState(false);
   const handleShowInputAmount = () => {
     setShowInputAmount(!showInputAmount);
@@ -35,6 +38,41 @@ const Donate = () => {
     }
     if (number !== 0) {
       setNumber(number + amount);
+    }
+  };
+  if (typeof number === "string" && number === "") {
+    setNumber(0);
+  }
+
+  const handlePayMethod = (e) => {
+    e.target.style.background = "#0707e7";
+    e.target.style.color = "#fff";
+  };
+
+  const updateAmount = () => {
+    setNumber(number.toString().slice(0, -1));
+  };
+
+  const handlePayment = async () => {
+    if (number) {
+      const headers = {
+        Authorization: token,
+        "Content-Type": "application/json",
+      };
+      const payConfig = {
+        method: "POST",
+        url: `${allCampaignRoute}/${campaignId}/paystack/pay`,
+        headers: headers,
+        data: {
+          amount: number,
+        },
+      };
+      await axios(payConfig)
+        .then((res) => {
+          console.log(res.data);
+          window.location.href = res.data;
+        })
+        .catch((err) => console.log(err));
     }
   };
   return (
@@ -64,7 +102,7 @@ const Donate = () => {
                 <img src={FlutterWave} alt="" />
                 <p>Flutter Wave</p>
               </DonateMethodTab>
-              <DonateMethodTab>
+              <DonateMethodTab onClick={(e) => handlePayMethod(e)}>
                 <img src={PayStack} alt="" />
                 <p>Paystack</p>
               </DonateMethodTab>
@@ -81,7 +119,7 @@ const Donate = () => {
         {showInputAmount && (
           <DonateAmountContainer>
             <p>How much do you want to donate?</p>
-            <DonateAmountTab>${number}</DonateAmountTab>
+            <DonateAmountTab>{number}</DonateAmountTab>
             <DonateAmountNumberContainer>
               <DonateAmountNumber onClick={() => handleSetNumber("1")}>
                 1
@@ -120,7 +158,12 @@ const Donate = () => {
                 0
               </DonateAmountNumber>
             </DonateAmountNumberContainer>
-            <DonateMakeBtn onClick={() => navigate("/donate/success")}>
+            <DonateAmountNumberContainer>
+              <DonateAmountNumber onClick={() => updateAmount()}>
+                Del
+              </DonateAmountNumber>
+            </DonateAmountNumberContainer>
+            <DonateMakeBtn onClick={() => handlePayment()}>
               Make Donation
             </DonateMakeBtn>
           </DonateAmountContainer>

@@ -105,9 +105,11 @@ const CampaignDetails = () => {
           <p>123+ people donated</p>
         </CampaignDetailDonate>
         <CampaignDetailProgressBarContainer>
-          <CampaignDetailProgressBar style={{
-            width: `${progress}%`
-          }}></CampaignDetailProgressBar>
+          <CampaignDetailProgressBar
+            style={{
+              width: `${progress}%`,
+            }}
+          ></CampaignDetailProgressBar>
         </CampaignDetailProgressBarContainer>
         <CampaignDetailTrackContainer>
           <CampaignDetailTrack>
@@ -133,7 +135,9 @@ const CampaignDetails = () => {
             gap: "10%",
           }}
         >
-          <CampaignDetailDonateBtn onClick={() => navigate("/donate")}>
+          <CampaignDetailDonateBtn
+            onClick={() => navigate(`/donate?id=${campaignId}`)}
+          >
             Make a donation
           </CampaignDetailDonateBtn>
           <CampaignDetailShareBtn>

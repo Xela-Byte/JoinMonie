@@ -44,10 +44,6 @@ export const DonateMethodTab = styled.div`
   border-radius: 20px;
   ${Centering}
   flex-direction: column;
-  &:first-child {
-    background: ${colors.blue};
-    color: white;
-  }
   & > img {
     width: 50%;
     height: 50%;

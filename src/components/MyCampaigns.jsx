@@ -1,8 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { allCampaignRoute } from "../utils/APIRoutes";
-import { token } from "../utils/Credentials";
 import {
   ExploreCampaignContainer,
   ExploreCampaignContent,
@@ -15,63 +10,13 @@ import { ProgressBarContainer, ProgressBar } from "../styled/Dashboard";
 import { colors } from "../styled/UniversalStyles";
 import { useNavigate } from "react-router-dom";
 
-const MyCampaigns = () => {
-  const [campaigns, setCampaigns] = useState([]);
-  const [userCampaignsArr, setUserCampaignsArr] = useState([]);
+const MyCampaigns = ({ userCampaign }) => {
   const navigate = useNavigate();
-
-  // Getting User Credentials
-  let user = localStorage.getItem("JoinMonie-User");
-  user = JSON.parse(user);
-  const { _id } = user;
-
-  // Getting Campaigns
-  useEffect(() => {
-    const getSingleCampaign = async () => {
-      const headers = {
-        Authorization: token,
-      };
-      const getConfig = {
-        method: "GET",
-        url: allCampaignRoute,
-        headers: headers,
-      };
-      await axios(getConfig)
-        .then((res) => {
-          setCampaigns(res.data.campaigns);
-        })
-        .catch((err) => {
-          toast.error(err.response.data.message);
-          console.log(err);
-        });
-    };
-    if (document.readyState === "complete") {
-      getSingleCampaign();
-    } else {
-      window.addEventListener("load", () => {
-        getSingleCampaign();
-      });
-      return () =>
-        document.removeEventListener("load", () => {
-          getSingleCampaign();
-        });
-    }
-  }, []);
-
-  useEffect(() => {
-    const userCampaigns = campaigns.filter((campaign) => {
-      return campaign.userId === _id;
-    });
-    return () => {
-      setUserCampaignsArr(userCampaigns);
-    };
-  }, [_id, campaigns]);
-
   return (
     <ExploreCampaignWrapper style={{ padding: "5%" }}>
       <p>My Campaigns</p>
       <ExploreCampaignContainer>
-        {userCampaignsArr.map((campaign) => {
+        {userCampaign.map((campaign) => {
           let { _id, campaignPhoto, campaignName, currentBalance, fundsGoal } =
             campaign;
 

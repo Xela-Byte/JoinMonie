@@ -15,8 +15,6 @@ import "react-dropdown/style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { countryNames } from "../utils/countryName";
-import Eye from "../assets/images/eye.svg";
-import EyeSlash from "../assets/images/eye-slash.svg";
 
 const SignUp = () => {
   // ******** //
