@@ -16,7 +16,7 @@ import ArrowRight from "../assets/images/left-arrow.png";
 // import MoniePoint from "../assets/images/moniepoint.png";
 // import FlutterWave from "../assets/images/flutterwave.svg";
 // import PayPal from "../assets/images/paypal.png";
-import PayStack from "../assets/images/paystack.svg";
+// import PayStack from "../assets/images/paystack.svg";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { token } from "../utils/Credentials";
@@ -76,7 +76,7 @@ const Donate = () => {
       await axios(payConfig)
         .then((res) => {
           console.log(res.data);
-          window.location.href = res.data;
+          window.location.href = res.data.data.authorization_url;
         })
         .catch((err) => {
           setLoading(false);
@@ -113,8 +113,8 @@ const Donate = () => {
                 <p>Flutter Wave</p>
               </DonateMethodTab> */}
               <DonateMethodTab onClick={(e) => handlePayMethod(e)}>
-                <img src={PayStack} alt="" />
-                <p>Paystack</p>
+                {/* <img src={PayStack} alt="" /> */}
+                <p>Cash</p>
               </DonateMethodTab>
               {/* <DonateMethodTab>
                 <img src={PayPal} alt="" />
