@@ -23,7 +23,7 @@ import Hands from "../assets/images/hands.jpg";
 import FooterNav from "../components/FooterNav";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { allCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
@@ -86,9 +86,8 @@ const Dashboard = () => {
   });
 
   // const searchCampaigns = (keyword) => {
-    
+
   // }
-  
 
   return (
     <>
@@ -127,7 +126,7 @@ const Dashboard = () => {
             }}
           >
             <p>Trending Campaigns</p>
-            <span>View all</span>
+            <Link to={"/explore"}>View all</Link>
           </div>
           {trendingCampaigns.map((campaign) => {
             let {

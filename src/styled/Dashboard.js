@@ -148,7 +148,8 @@ export const TrendingCampaignContainer = styled.div`
   & > div > p {
     font-weight: 600;
   }
-  & > div > span {
+  & > div > a {
+    text-decoration: none;
     color: ${colors.blue};
     font-size: 14px;
   }

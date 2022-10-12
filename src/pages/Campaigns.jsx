@@ -77,10 +77,7 @@ const Campaigns = () => {
         <CampaignStyledContainer>
           <CampaignsStyledHeader>
             <p>My Campaigns</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae,
-              illum!
-            </p>
+            <p>Here are the previews of all your campaigns.</p>
           </CampaignsStyledHeader>
           <ExploreNoCampaignContent>
             <img src={NoCampaign} alt="" />
@@ -91,7 +88,7 @@ const Campaigns = () => {
           </ExploreStartCampaignBtn>
         </CampaignStyledContainer>
       ) : (
-        <MyCampaigns userCampaign={userCampaignsArr} />
+        <MyCampaigns />
       )}
 
       <FooterNav />
