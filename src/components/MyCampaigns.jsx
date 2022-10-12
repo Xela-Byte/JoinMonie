@@ -9,11 +9,19 @@ import {
 import { ProgressBarContainer, ProgressBar } from "../styled/Dashboard";
 import { colors } from "../styled/UniversalStyles";
 import { useNavigate } from "react-router-dom";
+import useGetWindowSize from "../hooks/useWindowSize";
 
 const MyCampaigns = ({ userCampaign }) => {
   const navigate = useNavigate();
+  const windowWidth = useGetWindowSize().innerWidth;
   return (
-    <ExploreCampaignWrapper style={{ padding: "5%" }}>
+    <ExploreCampaignWrapper
+      style={{
+        padding: "5%",
+        width: windowWidth > 990 ? "70%" : "",
+        margin: windowWidth > 990 ? "auto" : "",
+      }}
+    >
       <p>My Campaigns</p>
       <ExploreCampaignContainer>
         {userCampaign.map((campaign) => {

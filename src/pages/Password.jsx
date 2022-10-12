@@ -17,6 +17,7 @@ import Loading from "../components/Loading";
 import { registerRoute } from "../utils/APIRoutes";
 import Eye from "../assets/images/eye.svg";
 import EyeSlash from "../assets/images/eye-slash.svg";
+import useGetWindowSize from "../hooks/useWindowSize";
 
 const Password = () => {
   // ******** //
@@ -35,6 +36,7 @@ const Password = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const windowWidth = useGetWindowSize().innerWidth;
 
   // Password Reveal
   const handlePasswordReveal = () => {
@@ -127,7 +129,11 @@ const Password = () => {
   return (
     <>
       {isLoading && <Loading />}
-      <SignUpContainer>
+      <SignUpContainer
+        style={{
+          width: windowWidth > 990 ? "60%" : "",
+        }}
+      >
         <SignUpHeaderText>Get Started</SignUpHeaderText>
         <div style={{ display: "flex" }}>
           <Line style={{ width: "48%", background: "#eee" }} />

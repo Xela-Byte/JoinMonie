@@ -1,6 +1,7 @@
 import "./css/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import LandingPage from "./components/landing-page/LandingIndex";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -31,6 +32,7 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<LandingPage/>}/>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<SignUp />} />
         <Route path="set-password" element={<Password />} />

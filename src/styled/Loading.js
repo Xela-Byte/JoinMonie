@@ -33,4 +33,10 @@ export const LoadingIcon = styled.div`
     width: 20%;
     height: 20%;
   }
+  @media screen and (min-width: 991px) {
+    & > img {
+      width: 20%;
+      height: 30%;
+    }
+  }
 `;

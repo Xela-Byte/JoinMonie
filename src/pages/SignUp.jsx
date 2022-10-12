@@ -72,15 +72,15 @@ const SignUp = () => {
 
   const handleValidation = () => {
     let { fullName, email, country, currency, DOB } = values;
-    DOB = DOB.slice(0, 4);
-    let yearNum = Number(DOB);
-    let presentYear = new Date().getFullYear();
-    let validBirthYear = presentYear - yearNum;
 
     if (!fullName || !email || !country || !currency || !DOB) {
       toast.error(`Please Fill All Fields.`, ToastifyProps);
       return false;
     }
+    DOB = DOB.slice(0, 4);
+    let yearNum = Number(DOB);
+    let presentYear = new Date().getFullYear();
+    let validBirthYear = presentYear - yearNum;
     if (fullName.length < 6) {
       toast.error("Name is too short", ToastifyProps);
       return false;

@@ -12,13 +12,19 @@ import {
   ExploreGhostContent,
   ExploreHeader,
 } from "../styled/Explore";
+import {
+  CampaignsStyledHeader,
+  CampaignStyledContainer,
+  ExploreNoCampaignContent,
+} from "../styled/Campaigns";
+import NoCampaign from "../assets/images/warning.svg";
+
 import { ProgressBarContainer, ProgressBar } from "../styled/Dashboard";
 import { colors } from "../styled/UniversalStyles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import Loading from "../components/Loading";
 import { allCampaignRoute } from "../utils/APIRoutes";
 import { useEffect } from "react";
 
@@ -27,35 +33,35 @@ const Explore = () => {
 
   // Hooks
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
+  const [active, setActive] = useState("");
+  const [campaignCategory, setCampaignCategory] = useState("");
 
   // Getting Campaigns
-  const getCampaigns = async () => {
-    setLoading(true);
-    let token = localStorage.getItem("JoinMonie-Verify-Token");
-    const headers = {
-      Authorization: token,
-    };
-    const getConfig = {
-      method: "GET",
-      url: allCampaignRoute,
-      headers: headers,
-    };
-    await axios(getConfig)
-      .then((res) => {
-        setLoading(false);
-        setCampaigns(res.data.campaigns);
-      })
-      .catch((err) => {
-        setLoading(false);
-        toast.error(err.response.data.message);
-        console.log(err);
-      });
-  };
+  let token = localStorage.getItem("JoinMonie-Verify-Token");
 
   // Calling the function whenever window loads.
   useEffect(() => {
+    const getCampaigns = async () => {
+      const headers = {
+        Authorization: token,
+      };
+      const getConfig = {
+        method: "GET",
+        url: allCampaignRoute,
+        headers: headers,
+      };
+
+      await axios(getConfig)
+        .then((res) => {
+          setCampaigns(res.data.campaigns);
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          console.log(err);
+        });
+    };
+
     if (document.readyState === "complete") {
       getCampaigns();
     } else {
@@ -67,7 +73,28 @@ const Explore = () => {
           getCampaigns();
         });
     }
-  }, []);
+  }, [token]);
+
+  const getCampaignCategory = async (category) => {
+    setCampaignCategory(category);
+    // Configuring Axios
+    const headers = {
+      Authorization: token,
+    };
+
+    const getCategoryConfig = {
+      method: "POST",
+      url: `${allCampaignRoute}/${category}`,
+      headers: headers,
+    };
+    await axios(getCategoryConfig)
+      .then((res) => {
+        setCampaigns(res.data.campaigns);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -79,28 +106,153 @@ const Explore = () => {
         <CategoryTabContainer>
           <p>Categories</p>
           <CategoryTabContent>
-            <CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("education");
+                setActive("education");
+              }}
+              style={{
+                background: active === "education" ? colors.blue : "",
+                color: active === "education" ? colors.white : "",
+              }}
+            >
               <p>Education</p>
             </CategoryTab>
-            <CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("agriculture");
+                setActive("agriculture");
+              }}
+              style={{
+                background: active === "agriculture" ? colors.blue : "",
+                color: active === "agriculture" ? colors.white : "",
+              }}
+            >
+              <p>Agriculture</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("commerce");
+                setActive("commerce");
+              }}
+              style={{
+                background: active === "commerce" ? colors.blue : "",
+                color: active === "commerce" ? colors.white : "",
+              }}
+            >
+              <p>Commerce</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("entertainment");
+                setActive("entertainment");
+              }}
+              style={{
+                background: active === "entertainment" ? colors.blue : "",
+                color: active === "entertainment" ? colors.white : "",
+              }}
+            >
+              <p>Entertainment</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("financial");
+                setActive("financial");
+              }}
+              style={{
+                background: active === "financial" ? colors.blue : "",
+                color: active === "financial" ? colors.white : "",
+              }}
+            >
+              <p>Financial</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("hospitality");
+                setActive("hospitality");
+              }}
+              style={{
+                background: active === "hospitality" ? colors.blue : "",
+                color: active === "hospitality" ? colors.white : "",
+              }}
+            >
+              <p>Hospitality</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("health");
+                setActive("health");
+              }}
+              style={{
+                background: active === "health" ? colors.blue : "",
+                color: active === "health" ? colors.white : "",
+              }}
+            >
               <p>Health</p>
             </CategoryTab>
-            <CategoryTab>
-              <p>Charity</p>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("leisure");
+                setActive("leisure");
+              }}
+              style={{
+                background: active === "leisure" ? colors.blue : "",
+                color: active === "leisure" ? colors.white : "",
+              }}
+            >
+              <p>Leisure</p>
             </CategoryTab>
-            <CategoryTab>
-              <p>Social</p>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("logistics");
+                setActive("logistics");
+              }}
+              style={{
+                background: active === "logistics" ? colors.blue : "",
+                color: active === "logistics" ? colors.white : "",
+              }}
+            >
+              <p>Logistics</p>
             </CategoryTab>
-            <CategoryTab>
-              <p>Business</p>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("non_profits");
+                setActive("non_profits");
+              }}
+              style={{
+                background: active === "non_profits" ? colors.blue : "",
+                color: active === "non_profits" ? colors.white : "",
+              }}
+            >
+              <p>Non Profits</p>
             </CategoryTab>
-            <CategoryTab>
-              <p>Environment</p>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("travel");
+                setActive("travel");
+              }}
+              style={{
+                background: active === "travel" ? colors.blue : "",
+                color: active === "travel" ? colors.white : "",
+              }}
+            >
+              <p>Travel</p>
+            </CategoryTab>
+            <CategoryTab
+              onClick={() => {
+                getCampaignCategory("utilities");
+                setActive("utilities");
+              }}
+              style={{
+                background: active === "utilities" ? colors.blue : "",
+                color: active === "utilities" ? colors.white : "",
+              }}
+            >
+              <p>Utilities</p>
             </CategoryTab>
           </CategoryTabContent>
         </CategoryTabContainer>
         <ExploreCampaignWrapper>
-          {loading && <Loading />}
           <ExploreCampaignContainer>
             {campaigns.map((campaign) => {
               let {
@@ -146,6 +298,28 @@ const Explore = () => {
                 </ExploreCampaignTab>
               );
             })}
+            {campaigns.length === 0 && (
+              <CampaignStyledContainer>
+                <CampaignsStyledHeader>
+                  <p>
+                    No campaign under category{" "}
+                    <span
+                      style={{
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {" "}
+                      {campaignCategory === "non_profits"
+                        ? "non profits"
+                        : campaignCategory}
+                    </span>
+                  </p>
+                </CampaignsStyledHeader>
+                <ExploreNoCampaignContent>
+                  <img src={NoCampaign} alt="" />
+                </ExploreNoCampaignContent>
+              </CampaignStyledContainer>
+            )}
           </ExploreCampaignContainer>
           <ExploreGhostContent />
         </ExploreCampaignWrapper>

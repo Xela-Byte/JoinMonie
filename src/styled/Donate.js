@@ -108,7 +108,7 @@ export const DonateMakeBtn = styled.div`
   ${Centering}
   width: 100%;
   color: #fff;
-  margin-top: 25%;
+  margin-top: 10%;
   background: ${colors.blue};
   padding: 10px;
   border-radius: 15px;

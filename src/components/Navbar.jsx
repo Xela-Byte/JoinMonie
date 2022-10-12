@@ -8,10 +8,10 @@ import {
 import ArrowRight from "../assets/images/left-arrow.png";
 import Flag from "../assets/images/flag.svg";
 import Info from "../assets/images/information-button.png";
-import Script from "../assets/images/terms.png";
-import People from "../assets/images/group.png";
+import Script from "../assets/images/valid.png";
+import People from "../assets/images/users-alt.png";
 import Question from "../assets/images/faq.png";
-import Warning from "../assets/images/warning.svg";
+import Warning from "../assets/images/warning.png";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {

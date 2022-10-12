@@ -11,6 +11,10 @@ export const NavbarContainer = styled.div`
   flex-direction: column;
   padding: 15% 10px 15% 10px;
   background: ${colors.white};
+  @media screen and (min-width: 991px) {
+    width: 100%;
+    padding: 2% 10px 5% 10px;
+  }
 `;
 
 export const NavbarIcon = styled.img`
@@ -18,12 +22,19 @@ export const NavbarIcon = styled.img`
   height: 30px;
   &:first-child {
     align-self: flex-end;
+    margin-right: 4%;
     margin-bottom: 5%;
     transform: rotate(180deg);
+  }
+  @media screen and (min-width: 991px) {
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
   }
 `;
 
 export const NavbarTab = styled.div`
+  cursor: pointer;
   width: 95%;
   height: 80px;
   ${Centering}
@@ -40,7 +51,16 @@ export const NavbarTab = styled.div`
     margin-left: auto;
     width: 30px;
     height: 30px;
+    cursor: pointer;
     transform: rotate(180deg);
+  }
+  @media screen and (min-width: 991px) {
+    width: 60%;
+    & > img {
+      width: 35px;
+      height: 35px;
+      margin-right: 5%;
+    }
   }
 `;
 
@@ -54,5 +74,6 @@ export const NavbarTabIconContainer = styled.div`
   & > img {
     width: 70%;
     height: 70%;
+    cursor: pointer;
   }
 `;

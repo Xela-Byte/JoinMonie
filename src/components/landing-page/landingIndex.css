@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  body {
+    @apply bg-neutral-100 font-Poppins_regular !text-black w-screen overflow-x-hidden;
+  }
+
+  *::-webkit-scrollbar {
+    @apply w-[10px] h-[10px];
+  }
+  *::-webkit-scrollbar-track {
+    @apply bg-secondary-200/40;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-secondary-200 rounded-[100vh] border-[1px] border-[#f6f7ed];
+  }
+
+  @font-face {
+    font-family: "Poppins-medium";
+    src: url("./Poppins-Medium.ttf");
+  }
+
+  @font-face {
+    font-family: "Poppins-regular";
+    src: url("./Poppins-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Poppins-bold";
+    src: url("./Poppins-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Poppins-semibold";
+    src: url("./Poppins-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "Poppins-extrabold";
+    src: url("./Poppins-ExtraBold.ttf");
+  }
+}
+
+@layer components {
+  .navbar-mobile {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    @apply h-screen p-20;
+    transition: 0.3s;
+    z-index: 999;
+  }
+  .navbar-mobile .mobile-nav-toggle {
+    @apply float-right;
+  }
+  .navbar-mobile ul {
+    display: block !important;
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    left: 15px;
+    padding: 10px 0;
+    border-radius: 10px;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: 0.3s;
+  }
+  .navbar-mobile a,
+  .navbar-mobile a:focus {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #5f687b;
+  }
+  .navbar-mobile a:hover,
+  .navbar-mobile .active,
+  .navbar-mobile li:hover > a {
+    color: var(--primary);
+  }
+  .navbar-mobile .getstarted,
+  .navbar-mobile .getstarted:focus {
+    margin: 15px;
+    padding: 10px 15px;
+  }
+  .navbar-mobile .dropdown ul {
+    position: static;
+    display: none;
+    margin: 10px 20px;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  }
+  .navbar-mobile .dropdown ul li {
+    min-width: 200px;
+  }
+  .navbar-mobile .dropdown ul a {
+    padding: 10px 20px;
+  }
+  .navbar-mobile .dropdown ul a i {
+    font-size: 12px;
+  }
+  .navbar-mobile .dropdown ul a:hover,
+  .navbar-mobile .dropdown ul .active:hover,
+  .navbar-mobile .dropdown ul li:hover > a {
+    color: var(--primary);
+  }
+  .navbar-mobile .dropdown > .dropdown-active {
+    display: block;
+  }
+}

@@ -8,6 +8,7 @@ export const SignUpContainer = styled.div`
   padding: 5%;
 
   @media screen and (min-width: 991px) {
+    width: 70%;
     height: auto;
   }
 `;
@@ -28,9 +29,6 @@ export const SignUpForm = styled.form`
     font-weight: 600;
     margin-bottom: 5%;
     color: ${colors.blue};
-  }
-  @media screen and (min-width: 991px) {
-    width: 80%;
   }
 `;
 
@@ -59,6 +57,15 @@ export const SignUpInputContainer = styled.div`
     position: absolute;
     left: 90%;
     bottom: 45%;
+  }
+  @media screen and (min-width: 991px) {
+    & > img {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 90%;
+      bottom: 55%;
+    }
   }
 `;
 

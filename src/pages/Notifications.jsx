@@ -12,6 +12,9 @@ import { getNotificationRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
+// eslint-disable-next-line
+import TimeAgo from "timeago-react";
+import moment from "moment";
 
 const Notifications = () => {
   const navigate = useNavigate();
@@ -24,13 +27,13 @@ const Notifications = () => {
       Authorization: token,
     };
     const getConfig = {
-      method: "GET",
+      method: "POST",
       url: getNotificationRoute,
       headers: headers,
     };
     await axios(getConfig)
       .then((res) => {
-        setNotifications(res.data);
+        setNotifications(res.data.notifications);
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -52,7 +55,6 @@ const Notifications = () => {
         });
     }
   }, []);
-  console.log(notifications);
 
   return (
     <NotificationContainer>
@@ -60,42 +62,34 @@ const Notifications = () => {
       <p>Notifications</p>
       <NewNotificationContainer>
         <p>New</p>
-        <NewNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </NewNotificationTab>
-        <NewNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </NewNotificationTab>
+        {/* {newNotifications.map((notification, index) => {
+          const { _id, message, createdAt } = notification;
+
+          return (
+            <NewNotificationTab key={_id}>
+              <p>{message}</p>
+              <p id="date">
+                <TimeAgo datetime={createdAt} locale="en" />
+              </p>
+            </NewNotificationTab>
+          );
+        })} */}
       </NewNotificationContainer>
       <OldNotificationContainer>
         <p>Old</p>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
-        <OldNotificationTab>
-          <p>Xela donated $50 to your 'Treatment for the sick' campaign</p>
-        </OldNotificationTab>
+        {notifications.map((notification, index) => {
+          const { _id, message, createdAt } = notification;
+
+          return (
+            <OldNotificationTab key={_id}>
+              <p>{message}</p>
+              <p id="date">
+                <TimeAgo datetime={createdAt} locale="en" />
+              </p>
+              <p>{moment().format(createdAt, 'hh')}</p>
+            </OldNotificationTab>
+          );
+        })}
       </OldNotificationContainer>
       <ToastContainer />
     </NotificationContainer>

@@ -13,6 +13,7 @@ import {
 } from "../styled/SignUp";
 import { loginRoute } from "../utils/APIRoutes";
 import Loading from "../components/Loading";
+import useGetWindowSize from "../hooks/useWindowSize";
 
 const Login = () => {
   // TITLE FOR PAGE
@@ -22,6 +23,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const windowWidth = useGetWindowSize().innerWidth;
 
   // Notification Props
   const ToastifyProps = {
@@ -32,7 +34,6 @@ const Login = () => {
     theme: "light",
     style: {
       borderRadius: "10px",
-      fontFamily: "Cairo",
     },
   };
 
@@ -126,7 +127,7 @@ const Login = () => {
             Login{" "}
           </SignUpBtn>
         </SignUpForm>
-        <ReferralText style={{ marginTop: "-20%" }}>
+        <ReferralText style={{ marginTop: windowWidth < 990 ? "-20%" : "" }}>
           Don't have an account? <Link to={"/register"}>Create One.</Link>
         </ReferralText>
         <ToastContainer />

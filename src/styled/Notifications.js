@@ -3,17 +3,25 @@ import { colors } from "./UniversalStyles";
 
 export const NotificationContainer = styled.div`
   width: 100%;
-  padding-top: 10%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 10% 15px 15px 15px;
   & > p {
     font-size: 23px;
     color: ${colors.blue};
     text-align: center;
   }
   & > img {
-  width: 25px;
-  height: 25px;
+    width: 25px;
+    height: 25px;
+  }
+  @media screen and (min-width: 991px) {
+    width: 60%;
+    margin: auto;
+    padding: 5% 15px 15px 15px;
+    & > img {
+      width: 35px;
+      cursor: pointer;
+      height: 35px;
+    }
   }
 `;
 
@@ -37,6 +45,9 @@ export const NewNotificationTab = styled.div`
     color: ${colors.blue};
     font-size: 14px;
   }
+  @media screen and (min-width: 991px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const OldNotificationContainer = styled.div`
@@ -59,5 +70,11 @@ export const OldNotificationTab = styled.div`
   & > p {
     color: ${colors.black};
     font-size: 14px;
+  }
+  & > p:last-child {
+    margin-top: 5px;
+  }
+  @media screen and (min-width: 991px) {
+    margin-bottom: 20px;
   }
 `;

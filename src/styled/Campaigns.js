@@ -5,6 +5,10 @@ export const CampaignStyledContainer = styled.div`
   width: 100%;
   height: 100vh;
   padding: 10px;
+  @media screen and (min-width: 991px) {
+    width: 70%;
+    margin: auto;
+  }
 `;
 
 export const CampaignsStyledHeader = styled.div`

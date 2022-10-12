@@ -5,6 +5,10 @@ export const ExploreContainer = styled.div`
   width: 100%;
   padding: 20px;
   height: auto;
+  @media screen and (min-width: 991px) {
+    width: 70%;
+    margin: auto;
+  }
 `;
 
 export const ExploreHeader = styled.div`
@@ -29,14 +33,25 @@ export const CategoryTabContent = styled.div`
   overflow-x: scroll;
   display: flex;
   gap: 15px;
+  padding: 10px;
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #eee;
+  }
 `;
 
 export const CategoryTab = styled.div`
-  width: fit-content;
-  padding: 15px;
+  min-width: fit-content;
+  padding: 10px;
   font-size: 14px;
   background: #eee;
-  border-radius: 10px;
+  border-radius: 20px;
   color: ${colors.black};
 `;
 
@@ -67,11 +82,22 @@ export const ExploreCampaignContainer = styled.div`
   @media screen and (max-height: 610px) {
     height: 100%;
   }
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #eee;
+  }
 `;
 export const ExploreCampaignTab = styled.div`
   box-shadow: -5px 5px 10px #c5c5c5, 10px -10px 17px #fbfbfb;
   width: 100%;
   margin-top: 5%;
+  cursor: pointer;
   border-radius: 10px;
   height: 70%;
   & > img {
@@ -79,6 +105,11 @@ export const ExploreCampaignTab = styled.div`
     width: 100%;
     height: 30vh;
     object-fit: cover;
+  }
+  @media screen and (min-width: 991px) {
+    & > img {
+      height: 40vh;
+    }
   }
 `;
 
@@ -117,4 +148,7 @@ export const ExploreCampaignInfo = styled.div`
 export const ExploreGhostContent = styled.div`
   width: 100%;
   height: 10vh;
+  @media screen and (min-width: 991px) {
+    height: 2vh;
+  }
 `;

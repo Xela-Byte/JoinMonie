@@ -19,6 +19,7 @@ export const DashboardHeader = styled.div`
   & > img {
     width: 30px;
     height: 30px;
+    cursor: pointer;
   }
   @media screen and (min-width: 991px) {
     margin-top: 0%;
@@ -28,16 +29,9 @@ export const DashboardHeader = styled.div`
 export const DashboardLogoContainer = styled.div`
   height: 100%;
   width: 40%;
-  gap: 5%;
-  ${Centering}
   & > img {
-    width: 30px;
-    height: 30px;
-  }
-  & > p {
-    font-size: 18px;
-    color: ${colors.blue};
-    font-weight: 600;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -49,6 +43,7 @@ export const DashboardNotify = styled.div`
   & > img {
     width: 30px;
     height: 30px;
+    cursor: pointer;
   }
 `;
 
@@ -139,6 +134,7 @@ export const CampaignStarterBtn = styled.div`
   cursor: pointer;
   background: ${colors.white};
   @media screen and (min-width: 991px) {
+    margin-top: 10%;
     width: 20%;
   }
 `;
@@ -198,7 +194,7 @@ export const TrendingCampaignTab = styled.div`
   @media screen and (min-width: 991px) {
     height: auto;
     & > img {
-      height: 65%;
+      max-height: 300px;
     }
   }
 `;
@@ -210,14 +206,13 @@ export const TrendingCampaignContent = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 5%;
-  & > p {
+  & > p:first-child {
     text-transform: uppercase;
     font-size: ${fontSizes.medium};
     font-weight: 700;
     color: ${colors.blue};
   }
   & > p:nth-child(2) {
-    text-transform: capitalize;
     font-size: ${fontSizes.small};
     color: ${colors.black};
   }

@@ -10,6 +10,12 @@ export const ProfileContainer = styled.div`
     width: 35px;
     height: 35px;
   }
+  @media screen and (min-width: 991px) {
+    & > img {
+      width: 40px;
+      height: 40px;
+    }
+  }
 `;
 
 export const ProfileDisplay = styled.div`
@@ -26,6 +32,15 @@ export const ProfileDisplay = styled.div`
   & > p {
     margin: 5px;
   }
+  @media screen and (min-width: 991px) {
+    & > img {
+      width: 150px;
+      height: 150px;
+    }
+    & > p {
+      margin: 10px;
+    }
+  }
 `;
 
 export const ProfileName = styled.p`
@@ -40,7 +55,12 @@ export const ProfileEmail = styled.p`
 export const ProfileTabContainer = styled.div`
   width: 100%;
   height: 70%;
-  padding-top: 20%;
+  padding-top: 15%;
+  @media screen and (min-width: 991px) {
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+  }
 `;
 
 export const ProfileTab = styled.div`
@@ -59,6 +79,9 @@ export const ProfileTab = styled.div`
   }
   & > img {
     margin-left: auto;
+  }
+  @media screen and (min-width: 991px) {
+    margin: 30px;
   }
 `;
 

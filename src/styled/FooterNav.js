@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Centering, fontSizes } from './UniversalStyles';
+import styled from "styled-components";
+import { Centering, fontSizes } from "./UniversalStyles";
 
 export const FooterNavContainer = styled.div`
   width: 100%;
@@ -24,8 +24,15 @@ export const FooterNavTab = styled.div`
   & > img {
     width: 50%;
     height: 50%;
+    cursor: pointer;
   }
   & > p {
     font-size: ${fontSizes.small};
+  }
+  @media screen and (max-width: 990px) {
+    & > img {
+      width: 35%;
+      height: 35%;
+    }
   }
 `;
