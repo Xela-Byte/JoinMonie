@@ -21,7 +21,6 @@ const MyCampaigns = () => {
   const navigate = useNavigate();
   const windowWidth = useGetWindowSize().innerWidth;
   const [campaigns, setCampaigns] = useState([]);
-  const [userCampaignsArr, setUserCampaignsArr] = useState([]);
 
   // User Credentials
   let user = localStorage.getItem("JoinMonie-User");
@@ -41,7 +40,10 @@ const MyCampaigns = () => {
       };
       await axios(getConfig)
         .then((res) => {
-          setCampaigns(res.data.campaigns);
+          const userCampaigns = res.data.campaigns.filter((campaign) => {
+            return campaign.userId === _id;
+          });
+          setCampaigns(userCampaigns);
         })
         .catch((err) => {
           console.log(err);
@@ -58,17 +60,8 @@ const MyCampaigns = () => {
           getSingleCampaign();
         });
     }
-  }, []);
+  }, [_id]);
 
-  useEffect(() => {
-    const userCampaigns = campaigns.filter((campaign) => {
-      return campaign.userId === _id;
-    });
-    return () => {
-      setUserCampaignsArr(userCampaigns);
-    };
-  }, [_id, campaigns]);
-  console.log(userCampaignsArr);
   return (
     <ExploreCampaignWrapper
       style={{
@@ -79,7 +72,7 @@ const MyCampaigns = () => {
     >
       <p>My Campaigns</p>
       <ExploreCampaignContainer>
-        {userCampaignsArr.map((campaign) => {
+        {campaigns.map((campaign) => {
           let { _id, campaignPhoto, campaignName, currentBalance, fundsGoal } =
             campaign;
 
