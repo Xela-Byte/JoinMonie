@@ -41,6 +41,7 @@ const MyCampaigns = () => {
       };
       await axios(getConfig)
         .then((res) => {
+          console.log(res.data);
           setCampaigns(res.data.campaigns);
         })
         .catch((err) => {
