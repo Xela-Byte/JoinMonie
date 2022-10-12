@@ -1,7 +1,6 @@
 import "./css/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import LandingPage from "./components/landing-page/LandingIndex";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -25,6 +24,7 @@ import ScrollToTop from "./utils/ScrollToTop";
 import NotFound from "./pages/NotFound";
 import CreateCampaignEmailInputComponent from "./components/CreateCampaignEmailInputComponent";
 import "./utils/Credentials";
+import ViewCampaignProgress from "./pages/ViewCampaignProgress";
 
 const App = () => {
   return (
@@ -32,7 +32,6 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<LandingPage/>}/>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<SignUp />} />
         <Route path="set-password" element={<Password />} />
@@ -40,12 +39,17 @@ const App = () => {
         <Route index path="dashboard" element={<Dashboard />} />
         <Route index path="explore" element={<Explore />} />
         <Route index path="campaigns" element={<Campaigns />} />
-        <Route index path="profile" element={<Profile />} />
         <Route path="create-campaign" element={<CreateCampaign />} />
         <Route
           path="create-campaign/input-email"
           element={<CreateCampaignEmailInputComponent />}
         />
+        <Route
+          index
+          path="campaign-progress"
+          element={<ViewCampaignProgress />}
+        />
+        <Route index path="profile" element={<Profile />} />
         <Route path="profile-details" element={<ProfileDetails />} />
         <Route path="security" element={<Security />} />
         <Route path="withdrawal" element={<Withdrawal />} />

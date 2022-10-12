@@ -1,13 +1,9 @@
 import {
   ExploreCampaignContainer,
   ExploreCampaignContent,
-  ExploreCampaignInfo,
-  ExploreCampaignTab,
   ExploreCampaignWrapper,
   ExploreGhostContent,
 } from "../styled/Explore";
-import { ProgressBarContainer, ProgressBar } from "../styled/Dashboard";
-import { colors } from "../styled/UniversalStyles";
 import { useNavigate } from "react-router-dom";
 import useGetWindowSize from "../hooks/useWindowSize";
 import { useState } from "react";
@@ -15,6 +11,7 @@ import { useEffect } from "react";
 import { token } from "../utils/Credentials";
 import { allCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
+import { MyCampaignsTab, ViewCampaignProgressBtn } from "../styled/Campaigns";
 
 const MyCampaigns = () => {
   //  Hooks
@@ -73,42 +70,20 @@ const MyCampaigns = () => {
       <p>My Campaigns</p>
       <ExploreCampaignContainer>
         {campaigns.map((campaign) => {
-          let { _id, campaignPhoto, campaignName, currentBalance, fundsGoal } =
-            campaign;
-
-          const currencySymbols = ["$"];
-
-          if (currencySymbols.includes(fundsGoal.toString().charAt(0))) {
-            fundsGoal = fundsGoal.toString().slice(1);
-          }
-
-          let progress = (Number(currentBalance) / Number(fundsGoal)) * 100;
+          let { _id, campaignPhoto, campaignName } = campaign;
 
           return (
-            <ExploreCampaignTab
-              key={_id}
-              onClick={() => navigate(`/campaign-details?id=${_id}`)}
-            >
+            <MyCampaignsTab key={_id}>
               <img src={campaignPhoto} alt="" />
               <ExploreCampaignContent>
                 <p>{campaignName}</p>
-                <ProgressBarContainer>
-                  <ProgressBar
-                    style={{
-                      width: `${progress}%`,
-                      minHeight: "0.5rem",
-                      background: ` ${colors.blue}`,
-                    }}
-                  />
-                </ProgressBarContainer>
-                <ExploreCampaignInfo>
-                  <p>
-                    {currentBalance} / {fundsGoal}
-                  </p>
-                  <p>{progress}%</p>
-                </ExploreCampaignInfo>
               </ExploreCampaignContent>
-            </ExploreCampaignTab>
+              <ViewCampaignProgressBtn
+                onClick={() => navigate(`/campaign-progress?id=${_id}`)}
+              >
+                View Progress
+              </ViewCampaignProgressBtn>
+            </MyCampaignsTab>
           );
         })}
       </ExploreCampaignContainer>

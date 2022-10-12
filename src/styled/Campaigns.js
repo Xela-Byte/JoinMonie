@@ -49,3 +49,32 @@ export const ExploreStartCampaignBtn = styled.div`
   border-radius: 5px;
   background: rgba(7, 7, 224, 0.3);
 `;
+
+export const MyCampaignsTab = styled.div`
+  box-shadow: -5px 5px 10px #c5c5c5, 10px -10px 17px #fbfbfb;
+  width: 100%;
+  margin-top: 5%;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 70%;
+  padding-bottom: 15px;
+  & > img {
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  @media screen and (min-width: 991px) {
+  }
+`;
+
+export const ViewCampaignProgressBtn = styled.div`
+  width: 70%;
+  padding: 10px;
+  margin: auto;
+  ${Centering};
+  font-size: 18px;
+  color: ${colors.blue};
+  border-radius: 5px;
+  background: rgba(7, 7, 224, 0.3);
+`;
