@@ -16,6 +16,27 @@ import { useEffect, useState } from "react";
 import TimeAgo from "timeago-react";
 import moment from "moment";
 
+moment.updateLocale("en", {
+  relativeTime: {
+    future: "in %s",
+    past: "%s ago",
+    s: "a few seconds",
+    ss: "%d seconds",
+    m: "a minute",
+    mm: "%d minutes",
+    h: "1 hour ago", //this is the setting that you need to change
+    hh: "%d hours",
+    d: "a day",
+    dd: "%d days",
+    w: "a week",
+    ww: "%d weeks",
+    M: "1 month ago", //change this for month
+    MM: "%d months",
+    y: "a year",
+    yy: "%d years",
+  },
+});
+
 const Notifications = () => {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
@@ -56,13 +77,24 @@ const Notifications = () => {
     }
   }, []);
 
+  const newNotification = notifications.filter((notification) => {
+    let { createdAt } = notification;
+    let notifyDate = moment(createdAt).utc().format("YYYY-MM-DD hh:mm:ss");
+    notifyDate = moment(notifyDate).fromNow();
+    return (
+      notifyDate.includes("minutes") ||
+      notifyDate.includes("seconds") ||
+      notifyDate.includes("now")
+    );
+  });
+
   return (
     <NotificationContainer>
       <img src={ArrowRight} alt="" onClick={() => navigate(-1)} />
       <p>Notifications</p>
       <NewNotificationContainer>
         <p>New</p>
-        {/* {newNotifications.map((notification, index) => {
+        {newNotification.map((notification, index) => {
           const { _id, message, createdAt } = notification;
 
           return (
@@ -73,12 +105,12 @@ const Notifications = () => {
               </p>
             </NewNotificationTab>
           );
-        })} */}
+        })}
       </NewNotificationContainer>
       <OldNotificationContainer>
         <p>Old</p>
         {notifications.map((notification, index) => {
-          const { _id, message, createdAt } = notification;
+          let { _id, message, createdAt } = notification;
 
           return (
             <OldNotificationTab key={_id}>
@@ -86,7 +118,6 @@ const Notifications = () => {
               <p id="date">
                 <TimeAgo datetime={createdAt} locale="en" />
               </p>
-              <p>{moment().format(createdAt, 'hh')}</p>
             </OldNotificationTab>
           );
         })}

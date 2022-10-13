@@ -88,6 +88,9 @@ export const SignUpDropdown = styled.div`
   .dropdown-signup:first-child {
     margin-right: 4%;
   }
+  .profile {
+    width: 100%;
+  }
 `;
 
 export const SignUpBtn = styled.button`
@@ -130,5 +133,30 @@ export const PasswordTC = styled.div`
   }
   & > p > span {
     font-weight: 600;
+  }
+`;
+
+
+export const SecurityHeader = styled.div`
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  & > img {
+    width: 35px;
+    height: 35px;
+  }
+  & > p {
+    text-align: center;
+    font-size: 18px;
+    margin-left: 20%;
+    color: ${colors.blue};
+  }
+  @media screen and (min-width: 991px) {
+    margin-bottom: 5%;
+    & > p {
+      margin: auto;
+      font-size: 4vh;
+    }
   }
 `;

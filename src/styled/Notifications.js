@@ -10,8 +10,8 @@ export const NotificationContainer = styled.div`
     text-align: center;
   }
   & > img {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
   }
   @media screen and (min-width: 991px) {
     width: 60%;

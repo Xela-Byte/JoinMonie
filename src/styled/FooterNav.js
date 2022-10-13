@@ -26,11 +26,17 @@ export const FooterNavTab = styled.div`
     height: 50%;
     cursor: pointer;
   }
+  .profileIcon {
+    width: 20%;
+    height: 50%;
+    cursor: pointer;
+  }
   & > p {
     font-size: ${fontSizes.small};
   }
   @media screen and (max-width: 990px) {
-    & > img {
+    & > img,
+    .profileIcon {
       width: 35%;
       height: 35%;
     }

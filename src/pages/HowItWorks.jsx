@@ -3,6 +3,7 @@ import "../css/fontawesome.css";
 import CollabAmico from "../assets/images/Collab-amico.png";
 import GoodTeamBro from "../assets/images/good-team-bro.png";
 import { useNavigate } from "react-router-dom";
+import ArrowLeft from "../assets/images/left-arrow.png";
 
 const HowItWorks = () => {
   const navigate = useNavigate();
@@ -10,14 +11,8 @@ const HowItWorks = () => {
     <>
       <main>
         <div className="container">
-          <nav>
-            <i
-              className="fa fa-arrow-circle-o-left  fa-2x icon"
-              aria-hidden="true"
-              onClick={() => navigate(-1)}
-            ></i>
-            <h2>How Joinmonie Works</h2>
-          </nav>
+          <img src={ArrowLeft} alt="" onClick={() => navigate(-1)} />
+          <p>How Joinmonie Works</p>
         </div>
       </main>
 
@@ -46,14 +41,14 @@ const HowItWorks = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatem, tenetur.
             </p>
-            <div className="hero">
-              <img src={GoodTeamBro} alt="illustration-img" />
-              <h3 className="text-hero">Withdraw Funds easily</h3>
-              <p className="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatem, tenetur.
-              </p>
-            </div>
+          </div>
+          <div className="hero">
+            <img src={GoodTeamBro} alt="illustration-img" />
+            <h3 className="text-hero">Withdraw Funds easily</h3>
+            <p className="lead">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem, tenetur.
+            </p>
           </div>
         </div>
       </section>

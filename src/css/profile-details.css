@@ -1,0 +1,303 @@
+/* -------- GLOBAL SELECTORS --------*/
+
+.container > a {
+  text-decoration: none;
+}
+.container > h1 {
+  color: #3365ff;
+  font-size: 25px;
+  font-weight: 600;
+}
+.container > h3 {
+  color: #3365ff;
+  font-size: 18px;
+  font-weight: 700;
+}
+.container > p {
+  font-size: 16px;
+}
+.container > ul {
+  list-style-type: none;
+}
+#profile {
+  width: 100%;
+  margin: auto;
+  padding-bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+.container > div > label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #353535;
+}
+
+/*-------- PARENT FLEX BOX --------*/
+
+.container {
+  margin: 0;
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/*-------- PARENT FLEX NAV-BAR --------*/
+
+.page-nav {
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  padding: 10px 25px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+/*-------- CHILD NAV-BAR CONTENT --------*/
+
+.fa-angle-left {
+  margin-top: 20px;
+  left: 0;
+  position: absolute;
+  font-size: 20px;
+  color: #3365ff;
+  cursor: pointer;
+}
+.page-title {
+  margin-top: 20px;
+}
+
+/*-------- PARENT USER INFO --------*/
+
+.parent-user-info {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+/*-------- FORM IMAGE UPLOADER --------*/
+.image-upload-btn {
+  color: #fff;
+  font-size: 35px;
+  background: url("../assets/images/firefighter.jpg");
+  background-size: cover;
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.image-upload-btn > img {
+  width: 20px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+}
+input[type="file"] {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  margin: auto;
+  opacity: 0;
+}
+
+/*-------- USER INFO: NAME/EMAIL FLEX --------*/
+
+.name-email {
+  display: flex;
+  flex-direction: column;
+}
+
+/*-------- USER INFO: NAME/EMAIL FIELD --------*/
+
+.name-email > input[type="text"],
+.name-email > input[type="email"] {
+  outline: none;
+  border: 1px solid #bbbbbb;
+  background: none;
+  height: 40px;
+  padding: 7px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.name-email > input[type="text"]:invalid,
+.name-email > input[type="email"]:invalid {
+  border: 1px solid #bbbbbb;
+}
+
+.name-email > input[type="text"]:valid,
+.name-email > input[type="email"]:valid {
+  border: 1px solid #3365ff;
+  color: #3365ff;
+}
+
+/*-------- USER INFO: COUNTRY/O.NAME FLEX --------*/
+
+.country-organization {
+  display: flex;
+  flex-direction: column;
+}
+
+/*-------- USER INFO: COUNTRY/O.NAME FIELD --------*/
+
+.country-organization > select,
+.country-organization > input[type="text"] {
+  outline: none;
+  border: 1px solid #bbbbbb;
+  background: none;
+  height: 40px;
+  padding: 7px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.country-organization > select:invalid,
+.country-organization > input[type="text"]:invalid {
+  color: #151515;
+  border: 1px solid #bbbbbb;
+}
+
+.country-organization > select:valid,
+.country-organization > input[type="text"] {
+  color: #3365ff;
+  border: 1px solid #3365ff;
+}
+
+/*-------- SAVE BUTTON --------*/
+
+form > input[type="submit"] {
+  color: #fff;
+  background: #3365ff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 100%;
+  height: 35px;
+  padding: 7px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 30px auto 20px auto;
+  cursor: pointer;
+}
+
+/*-------- FOR LARGER SCREENS ----------*/
+
+@media screen and (min-width: 435px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+  p {
+    font-size: 22px;
+  }
+  form {
+    width: 90%;
+  }
+  label {
+    font-size: 18px;
+    position: absolute;
+  }
+
+  .fa-angle-left {
+    font-size: 30px;
+    left: 40px;
+  }
+
+  .image-upload-btn {
+    width: 170px;
+    height: 170px;
+    margin: 50px auto;
+  }
+  .image-upload-btn > img {
+    width: 30px;
+  }
+
+  .name-email {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .name-email > input {
+    font-size: 20px;
+  }
+
+  .name-email > input[type="text"],
+  .name-email > input[type="email"] {
+    margin: 20px 10px;
+    padding: 15px 23px;
+    width: 100%;
+    height: 70px;
+  }
+
+  .country-organization {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .country-organization > input,
+  select {
+    font-size: 20px;
+  }
+
+  .country-organization > select,
+  .country-organization > input[type="text"] {
+    margin: 20px 10px;
+    padding: 15px 23px;
+    width: 100%;
+    height: 70px;
+  }
+
+  label[for="fname"],
+  label[for="country"] {
+    font-size: 20px;
+    left: 13%;
+    margin-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background: #f8f9ff;
+  }
+  label[for="email"] {
+    font-size: 20px;
+    float: right;
+    right: 34%;
+    margin-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background: #f8f9ff;
+  }
+  label[for="oname"] {
+    font-size: 20px;
+    float: right;
+    right: 30%;
+    margin-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background: #f8f9ff;
+  }
+
+  form > input[type="submit"] {
+    height: 50px;
+    width: 70%;
+  }
+}

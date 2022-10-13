@@ -7,10 +7,10 @@ import {
 } from "../styled/Navbar";
 import ArrowRight from "../assets/images/left-arrow.png";
 import Flag from "../assets/images/flag.svg";
-import Info from "../assets/images/information-button.png";
+import Info from "../assets/images/info (1).png";
 import Script from "../assets/images/valid.png";
 import People from "../assets/images/users-alt.png";
-import Question from "../assets/images/faq.png";
+import Question from "../assets/images/question.svg";
 import Warning from "../assets/images/warning.png";
 import { useNavigate } from "react-router-dom";
 

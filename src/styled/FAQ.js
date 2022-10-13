@@ -14,8 +14,8 @@ export const FAQContainer = styled.div`
     color: ${colors.black};
   }
   & > img {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     margin-left: auto;
     margin-bottom: 5%;
   }
@@ -79,4 +79,17 @@ export const FAQSubContent = styled.div`
   border-radius: 10px;
   margin-top: 10px;
   background: #eee;
+`;
+
+export const TrustCard = styled.div`
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  background: ${colors.blue};
+  color: ${colors.white};
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  padding: 10px;
+  font-size: 20px;
 `;

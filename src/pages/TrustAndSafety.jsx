@@ -1,83 +1,130 @@
+import { useState } from "react";
+import {
+  FAQContainer,
+  FAQContent,
+  FAQSubContent,
+  FAQTab,
+  TrustCard,
+} from "../styled/FAQ";
+import ArrowDown from "../assets/images/left-arrow.png";
 import { useNavigate } from "react-router-dom";
-import "../css/trust-and-safety.css";
+import { AnimatePresence, motion } from "framer-motion";
+import Close from "../assets/images/close.svg";
 
 const TrustAndSafety = () => {
-  const navigate = useNavigate(-1);
+  const navigate = useNavigate();
+  const [showContent, setShowShowContent] = useState(false);
+  const [showFAQTab, setShowFAQTab] = useState(false);
+  const handleShowContent = () => {
+    setShowShowContent(!showContent);
+    setShowFAQTab(true);
+  };
 
-  const acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  }
+  const handleShowFAQTab = () => {
+    setShowFAQTab(!showFAQTab);
+  };
   return (
-    <>
-      <div className="main">
-        <div className="container">
-          <div className="header">
-            <i
-              className="fa fa-arrow-circle-o-left fa-2x"
-              onClick={() => navigate(-1)}
-            ></i>
-            <h3 id="blue-head">Trust and safety </h3>
-          </div>
-        </div>
+    <FAQContainer>
+      <img src={ArrowDown} alt="" onClick={() => navigate(-1)} />
+      <p>Trust And Safety</p>
 
-        <div className="blue-card">
-          <div className="card-text">
-            <h2>Creating a safe space for our community of users.</h2>
-          </div>
-        </div>
-
-        <div className="content">
-          <p className="sub-title">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab
-            asperiores corporis laborum, officia aspernatur ullam facilis quo
-            voluptas ducimus excepturi inventore exercitationem. Maiores,
-            accusamus quaerat! Ipsum mollitia cumque obcaecati pariatur. Lorem
-            ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt quod
-            saepe quidem?
-          </p>
-        </div>
-
-        <div className="safety-tips">
-          <h2 className="h2 blue-tips">Safety Tips</h2>
-          <button className="accordion">
-            How to identify fund raising scam
-          </button>
-          <div className="panel">
-            <p className="answer">Lorem ipsum...</p>
+      <TrustCard>
+        <p>Creating</p>
+      </TrustCard>
+      {showFAQTab && (
+        <FAQTab>
+          <div>
+            <p>How long does withdrawal takes?</p>
+            <img src={Close} alt="" onClick={() => handleShowFAQTab()} />
           </div>
 
-          <button className="accordion">
-            How to identify fund raising scam
-          </button>
-          <div className="panel">
-            <p className="answer">Lorem ipsum...</p>
-          </div>
+          {showContent === true ? (
+            <motion.p
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+                transition: {
+                  duration: 1,
+                },
+              }}
+            >
+              Withdrawal does takes about an hour, Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Libero explicabo laborum est
+              ratione, cum praesentium voluptates minima quidem distinctio
+              eaque.
+            </motion.p>
+          ) : (
+            <p>
+              Withdrawal takes about an hour before your funds are sent to your
+              bank account.
+            </p>
+          )}
+        </FAQTab>
+      )}
+      <FAQContent onClick={() => handleShowContent()}>
+        <p>How long does withdrawal takes</p>
+        <img
+          src={ArrowDown}
+          alt=""
+          style={{
+            transform: showContent === true ? "rotate(180deg)" : "",
+          }}
+        />
+      </FAQContent>
+      <AnimatePresence>
+        {showContent && (
+          <FAQSubContent
+            as={motion.div}
+            initial={{
+              height: 0,
+              overflow: "hidden",
+            }}
+            whileInView={{
+              height: "30%",
+              transition: {
+                duration: 0.2,
+              },
+            }}
+            exit={{
+              height: "0%",
+              transition: {
+                duration: 0.2,
+              },
+            }}
+          >
+            <p>
+              Withdrawal does takes about an hour, Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Libero explicabo laborum est
+              ratione, cum praesentium voluptates minima quidem distinctio
+              eaque.
+            </p>
+          </FAQSubContent>
+        )}
+      </AnimatePresence>
 
-          <button className="accordion">
-            How to identify fund raising scam
-          </button>
-          <div className="panel">
-            <p className="answer">Lorem ipsum...</p>
-          </div>
-          <button type="submit" className="how">
-            How to make campaign
-          </button>
-        </div>
-      </div>
-
-      <script src="main.js"></script>
-    </>
+      <FAQContent>
+        <p>How long does withdrawal takes</p>
+        <img src={ArrowDown} alt="" />
+      </FAQContent>
+      <FAQContent>
+        <p>How long does withdrawal takes</p>
+        <img src={ArrowDown} alt="" />
+      </FAQContent>
+      <FAQContent>
+        <p>How long does withdrawal takes</p>
+        <img src={ArrowDown} alt="" />
+      </FAQContent>
+      <FAQContent>
+        <p>How long does withdrawal takes</p>
+        <img src={ArrowDown} alt="" />
+      </FAQContent>
+      <FAQContent>
+        <p>How long does withdrawal takes</p>
+        <img src={ArrowDown} alt="" />
+      </FAQContent>
+    </FAQContainer>
   );
 };
 

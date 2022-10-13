@@ -130,7 +130,7 @@ export const CampaignStarterBtn = styled.div`
   padding: 10px;
   color: ${colors.blue};
   border-radius: 10px;
-  margin-top: 5%;
+  margin-top: 15%;
   cursor: pointer;
   background: ${colors.white};
   @media screen and (min-width: 991px) {
