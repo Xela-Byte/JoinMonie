@@ -19,7 +19,7 @@ import Person2 from "../assets/images/person-2.png";
 import Person3 from "../assets/images/person-3.jpg";
 import Share from "../assets/images/share (1).png";
 import { useState } from "react";
-import { getSingleCampaignRoute } from "../utils/APIRoutes";
+import { allCampaignRoute, getSingleCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
@@ -33,6 +33,7 @@ const CampaignDetails = () => {
   const [searchParams] = useSearchParams();
   const campaignId = searchParams.get("id");
   const [showShareTab, setShowShareTab] = useState(false);
+  const [donation, setDonation] = useState(0);
 
   // Calling the function whenever window loads.
   useEffect(() => {
@@ -50,6 +51,19 @@ const CampaignDetails = () => {
       await axios(getConfig)
         .then((res) => {
           setCampaign(res.data.campaign);
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          console.log(err);
+        });
+      const getDonationConfig = {
+        method: "GET",
+        url: `${allCampaignRoute}/${campaignId}/donations`,
+      };
+      await axios(getDonationConfig)
+        .then((res) => {
+          console.log(res.data);
+          setDonation(res.data);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -113,7 +127,7 @@ const CampaignDetails = () => {
             <img src={Person3} alt={"Person"} />
             <img src={Person2} alt={"Person"} />
           </div>
-          <p>123+ people donated</p>
+          <p>{donation} people donated</p>
         </CampaignDetailDonate>
         <CampaignDetailProgressBarContainer>
           <CampaignDetailProgressBar

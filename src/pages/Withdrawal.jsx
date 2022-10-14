@@ -1,7 +1,7 @@
 import {
   NoWithdrawal,
-  WithdrawalContainer,
-  WithdrawalTab,
+  // WithdrawalContainer,
+  // WithdrawalTab,
   WithdrawContainer,
   WithdrawHeader,
 } from "../styled/WithDraw";
@@ -21,14 +21,14 @@ const Withdrawal = () => {
         <img src={Close} alt="" />
         <p>You have no withdrawal record</p>
       </NoWithdrawal>
-      <WithdrawalContainer>
+      {/* <WithdrawalContainer>
         <WithdrawalTab>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
             rerum autem labore adipisci.
           </p>
         </WithdrawalTab>
-      </WithdrawalContainer>
+      </WithdrawalContainer> */}
     </WithdrawContainer>
   );
 };

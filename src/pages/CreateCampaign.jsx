@@ -146,7 +146,7 @@ const CreateCampaign = () => {
           <img src={ArrowLeft} alt="" onClick={() => navigate("/campaigns")} />
           <p>Start Campaign</p>
         </CreateCampaignHeader>
-        <p>Lorem ipsum, dolor sit amet consectetur.</p>
+        <p>Let's get your campaign funded.</p>
         <CreateCampaignForm onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor="campaign-name">Campaign Name</label>
           <CreateCampaignInput

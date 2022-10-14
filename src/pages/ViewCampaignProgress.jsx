@@ -110,8 +110,12 @@ const ViewCampaignProgress = () => {
             </ViewProgressDonated>
             <ViewProgressDate>
               <ViewProgressDay>3 days left</ViewProgressDay>
-              <ViewProgressExtendBtn>Extend</ViewProgressExtendBtn>
-            </ViewProgressDate>{" "}
+              <ViewProgressExtendBtn
+                onClick={() => navigate(`extendCampaign?id=${campaignId}`)}
+              >
+                Extend
+              </ViewProgressExtendBtn>
+            </ViewProgressDate>
             <ViewProgressWithdrawBtn>Withdraw</ViewProgressWithdrawBtn>
           </>
         );

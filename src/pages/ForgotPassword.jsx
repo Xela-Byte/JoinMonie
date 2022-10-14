@@ -11,11 +11,10 @@ import {
   SignUpForm,
   SignUpInputContainer,
 } from "../styled/SignUp";
-import { updatePasswordRoute } from "../utils/APIRoutes";
+import { resetPasswordRoute } from "../utils/APIRoutes";
 import Eye from "../assets/images/eye.svg";
 import EyeSlash from "../assets/images/eye-slash.svg";
 import useGetWindowSize from "../hooks/useWindowSize";
-import { token } from "../utils/Credentials";
 
 const ForgotPassword = () => {
   // ******** //
@@ -34,6 +33,8 @@ const ForgotPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const windowWidth = useGetWindowSize().innerWidth;
+
+  let resetToken = localStorage.getItem("resetToken");
 
   // Password Reveal
   const handlePasswordReveal = () => {
@@ -72,12 +73,12 @@ const ForgotPassword = () => {
 
     if (handleValidation()) {
       const headers = {
-        Authorization: token,
+        Authorization: resetToken,
         "Content-Type": "application/json",
       };
       const resetConfig = {
         method: "POST",
-        url: updatePasswordRoute,
+        url: resetPasswordRoute,
         headers: headers,
         data: {
           password: password,

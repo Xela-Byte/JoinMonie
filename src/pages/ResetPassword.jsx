@@ -63,7 +63,11 @@ const Security = () => {
         .then((res) => {
           setLoading(false);
           console.log(res.data);
+          localStorage.setItem("resetToken", res.data.resetToken);
           toast.success("Your request is sent successfully");
+        })
+        .then(() => {
+          navigate("/forgot-password");
         })
         .catch((err) => {
           setLoading(false);
