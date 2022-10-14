@@ -29,6 +29,7 @@ import AboutUs from "./pages/AboutUs";
 import ForgotPassword from "./pages/ForgotPassword";
 import ReportCampaign from "./pages/ReportCampaign";
 import ResetPassword from "./pages/ResetPassword";
+import ExtendCampaignDate from "./pages/ExtendCampaignDate";
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
           path="campaign-progress"
           element={<ViewCampaignProgress />}
         />
+        <Route index path="extendCampaign" element={<ExtendCampaignDate />} />
         <Route index path="profile" element={<Profile />} />
         <Route path="profile-details" element={<ProfileDetails />} />
         <Route path="security" element={<Security />} />

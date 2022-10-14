@@ -19,7 +19,7 @@ import Person2 from "../assets/images/person-2.png";
 import Person3 from "../assets/images/person-3.jpg";
 import Share from "../assets/images/share (1).png";
 import { useState } from "react";
-import { allCampaignRoute, getSingleCampaignRoute } from "../utils/APIRoutes";
+import { allCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
@@ -45,12 +45,15 @@ const CampaignDetails = () => {
       };
       const getConfig = {
         method: "GET",
-        url: `${getSingleCampaignRoute}/${campaignId}`,
+        url: `${allCampaignRoute}`,
         headers: headers,
       };
       await axios(getConfig)
         .then((res) => {
-          setCampaign(res.data.campaign);
+          const singleCampaign = res.data.campaigns.filter((campaign) => {
+            return campaign._id === campaignId;
+          });
+          setCampaign(singleCampaign);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
