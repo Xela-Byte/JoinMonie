@@ -3,10 +3,8 @@ import { colors } from "./UniversalStyles";
 
 export const FAQContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  padding-top: 10%;
-  padding-left: 15px;
-  padding-right: 15px;
+  height: auto;
+  padding: 10% 15px 5% 15px;
   & > p {
     text-align: center;
     font-size: 20px;
@@ -73,9 +71,8 @@ export const FAQContent = styled.div`
 
 export const FAQSubContent = styled.div`
   width: 100%;
-  height: 0;
   overflow: hidden;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   margin-top: 10px;
   background: #eee;

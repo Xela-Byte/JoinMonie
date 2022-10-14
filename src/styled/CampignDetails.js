@@ -146,8 +146,38 @@ export const CampaignDetailDonateBtn = styled.div`
 `;
 
 export const CampaignDetailShareBtn = styled.div`
-  width: 15%;
+  width: 20%;
+  ${Centering}
   background: rgba(7, 7, 224, 0.15);
   border-radius: 10px;
   padding: 15px;
+  & > img {
+    width: 25px;
+    height: 25px;
+  }
+`;
+
+export const ShareTabContainer = styled.div`
+  width: 100%;
+  height: 10%;
+  left: 0;
+  background: #eee;
+  position: fixed;
+  top: 0;
+  padding: 10px;
+  ${Centering}
+  gap: 10%;
+  z-index: 999;
+`;
+
+export const ShareTabContent = styled.div`
+  width: 20%;
+  height: 100%;
+  border-radius: 5px;
+  background: #fff;
+  padding: 10px;
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
 `;

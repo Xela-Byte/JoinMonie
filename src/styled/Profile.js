@@ -93,7 +93,17 @@ export const ProfileTabContent = styled.div`
     color: #474747;
     font-size: 18px;
   }
+  &:last-child > p:first-child > a {
+    font-weight: 600;
+    color: #474747;
+    font-size: 18px;
+  }
   & > p:last-child {
+    color: ${colors.grey};
+    font-weight: 500;
+    font-size: 14px;
+  }
+  &:last-child > p:last-child > a {
     color: ${colors.grey};
     font-weight: 500;
     font-size: 14px;

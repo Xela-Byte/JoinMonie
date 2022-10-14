@@ -184,8 +184,10 @@ const Password = () => {
           </SignUpInputContainer>
           <PasswordTC>
             <p>
-              By signing up, you agree to our <span>Terms and Condition</span>{" "}
-              and <span>Privacy Policy.</span>
+              By signing up, you agree to our
+              <a href="https://docs.google.com/document/d/1wDSwL3uImyZYtFn-xSKAzGXse5no0wgxAmczB5Aj8VU/edit?usp=drivesdk&urp=gmail_link">
+                Terms and Condition.
+              </a>
             </p>
           </PasswordTC>
           <SignUpBtn type="submit" onClick={() => setIsLoading(true)}>

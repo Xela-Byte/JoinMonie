@@ -41,6 +41,9 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+.hero {
+  padding: 5%;
+}
 
 .showcase > .hero > img {
   position: relative;
@@ -55,8 +58,9 @@ main {
   color: var(--blue-blue);
 }
 
-.showcase .hero p.lead {
+.showcase > .hero > p.lead {
   font-weight: 300;
+  margin: 5%;
   text-align: center;
   color: var(--black);
 }

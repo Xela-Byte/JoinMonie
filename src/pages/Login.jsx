@@ -122,7 +122,7 @@ const Login = () => {
               onClick={(e) => handleAutoFill(e)}
             />
             <p style={{ marginTop: "5%" }}>
-              Forgot password? <Link to={"/forgot-password"}>Reset </Link>
+              Forgot password? <Link to={"/reset-password"}>Reset </Link>
             </p>
           </SignUpInputContainer>
 

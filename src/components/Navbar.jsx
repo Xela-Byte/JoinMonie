@@ -40,7 +40,7 @@ const Navbar = () => {
             <p>trust and safety</p>
             <NavbarIcon src={ArrowRight} alt="" />
           </NavbarTab>
-          <NavbarTab>
+          <NavbarTab onClick={() => navigate("/how-to-report")}>
             <NavbarTabIconContainer>
               <img src={Flag} alt="" />
             </NavbarTabIconContainer>
@@ -54,14 +54,19 @@ const Navbar = () => {
             <p>frequently asked questions</p>
             <NavbarIcon src={ArrowRight} alt="" />
           </NavbarTab>
-          <NavbarTab>
+          <NavbarTab onClick={() => navigate("/about-us")}>
             <NavbarTabIconContainer>
               <img src={People} alt="" />
             </NavbarTabIconContainer>
             <p>about us</p>
             <NavbarIcon src={ArrowRight} alt="" />
           </NavbarTab>
-          <NavbarTab>
+          <NavbarTab
+            onClick={() =>
+              (window.location.href =
+                "https://docs.google.com/document/d/1wDSwL3uImyZYtFn-xSKAzGXse5no0wgxAmczB5Aj8VU/edit?usp=drivesdk&urp=gmail_link")
+            }
+          >
             <NavbarTabIconContainer>
               <img src={Script} alt="" />
             </NavbarTabIconContainer>

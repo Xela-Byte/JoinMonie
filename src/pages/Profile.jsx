@@ -12,7 +12,6 @@ import {
 
 import ProfileImage from "../assets/images/home-d-img.jpg";
 import User from "../assets/images/user-copy.svg";
-import Info from "../assets/images/info.svg";
 import Script from "../assets/images/script.svg";
 import Correct from "../assets/images/correct.svg";
 import ArrowRight from "../assets/images/left-arrow.png";
@@ -24,6 +23,8 @@ const Profile = () => {
   user = JSON.parse(user);
 
   const { fullName, email } = user;
+
+  
   return (
     <>
       <ProfileContainer>
@@ -59,15 +60,6 @@ const Profile = () => {
             <ProfileTabContent>
               <p>Withdrawal Records</p>
               <p>View your transaction history</p>
-            </ProfileTabContent>
-          </ProfileTab>
-          <ProfileTab onClick={() => navigate("/support")}>
-            <ProfileTabIconContainer>
-              <img src={Info} alt="" />
-            </ProfileTabIconContainer>
-            <ProfileTabContent>
-              <p>Help and Support</p>
-              <p>Email Us</p>
             </ProfileTabContent>
           </ProfileTab>
         </ProfileTabContainer>

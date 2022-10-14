@@ -5,15 +5,15 @@ import GoodTeamBro from "../assets/images/good-team-bro.png";
 import { useNavigate } from "react-router-dom";
 import ArrowLeft from "../assets/images/left-arrow.png";
 
-const HowItWorks = () => {
+const ReportCampaign = () => {
   const navigate = useNavigate();
-  document.title = "Joinmonie | How It Works";
+  document.title = "Joinmonie | How to report a campaign";
   return (
     <>
       <main>
         <div className="container">
           <img src={ArrowLeft} alt="" onClick={() => navigate(-1)} />
-          <p>How Joinmonie Works</p>
+          <p>How to report a campaign</p>
         </div>
       </main>
 
@@ -21,37 +21,31 @@ const HowItWorks = () => {
         <div className="showcase">
           <div className="hero">
             <img src={CollabAmico} alt="illustration-img" />
-            <h3 className="text-hero">Create an account</h3>
+            <h3 className="text-hero">Step 1</h3>
             <p className="lead">
-              Get started with JoinMonie by creating an account to give you
-              unlimited access to all features.
+              Click the report (flag) icon on the viewing page of the campaign
+              you want to report.
             </p>
           </div>
           <div className="hero">
             <img src={CollabAmico} alt="illustration-img" />
-            <h3 className="text-hero">Create your campaign</h3>
+            <h3 className="text-hero">Step 2</h3>
             <p className="lead">
-              It's quite easy to create a fundraising campaign with us starting
-              from your campaign name down to your campaign end date. With
-              JoinMonie, you can create afundraising campaign and get funds
-              raised in as little as 2 minutes.
+              Select the reason(s) for which you think the campaign might be
+              fake.
             </p>
           </div>
           <div className="hero">
             <img src={GoodTeamBro} alt="illustration-img" />
-            <h3 className="text-hero">Follow Progress of Campaign</h3>
-            <p className="lead">
-              Get to follow progress of campaign and view amount raised and the
-              number of the wonderful people who funded your campaign.
-            </p>
+            <h3 className="text-hero">Step 3</h3>
+            <p className="lead">Click on `Report Campaign`</p>
           </div>
           <div className="hero">
             <img src={GoodTeamBro} alt="illustration-img" />
-            <h3 className="text-hero">Seamless Withdrawal</h3>
+            <h3 className="text-hero">Step 4</h3>
             <p className="lead">
-              Withdraw 95% of funds raised seamlessly in an hour with no issues
-              whatsoever. Please note, we would get 5% of funds raised to keep
-              Joinmonie going
+              Wait patiently as we will review and send feedback on reported
+              campaign.
             </p>
           </div>
         </div>
@@ -60,4 +54,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default ReportCampaign;

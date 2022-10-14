@@ -131,11 +131,13 @@ export const PasswordTC = styled.div`
   & > p {
     font-size: ${fontSizes.small};
   }
-  & > p > span {
+  & > p > a {
+    margin-left: 5px;
+    color: ${colors.blue};
+    text-decoration: none;
     font-weight: 600;
   }
 `;
-
 
 export const SecurityHeader = styled.div`
   width: 100%;

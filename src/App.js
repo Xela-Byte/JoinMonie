@@ -27,6 +27,8 @@ import "./utils/Credentials";
 import ViewCampaignProgress from "./pages/ViewCampaignProgress";
 import AboutUs from "./pages/AboutUs";
 import ForgotPassword from "./pages/ForgotPassword";
+import ReportCampaign from "./pages/ReportCampaign";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
@@ -38,6 +40,7 @@ const App = () => {
         <Route path="register" element={<SignUp />} />
         <Route path="set-password" element={<Password />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="reset-password" element={<ResetPassword />} />
         <Route path="upload-image" element={<UploadImage />} />
         <Route index path="dashboard" element={<Dashboard />} />
         <Route index path="explore" element={<Explore />} />
@@ -62,6 +65,7 @@ const App = () => {
         <Route path="donate/success" element={<DonateSuccess />} />
         <Route path="notifications" element={<Notifications />} />
         <Route path="how-it-works" element={<HowItWorks />} />
+        <Route path="how-to-report" element={<ReportCampaign />} />
         <Route path="trust-and-safety" element={<TrustAndSafety />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />

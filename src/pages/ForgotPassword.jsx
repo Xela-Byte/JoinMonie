@@ -16,7 +16,6 @@ import Eye from "../assets/images/eye.svg";
 import EyeSlash from "../assets/images/eye-slash.svg";
 import useGetWindowSize from "../hooks/useWindowSize";
 import { token } from "../utils/Credentials";
-import Loading from "../components/Loading";
 
 const ForgotPassword = () => {
   // ******** //
@@ -34,7 +33,6 @@ const ForgotPassword = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const windowWidth = useGetWindowSize().innerWidth;
 
   // Password Reveal
@@ -104,7 +102,6 @@ const ForgotPassword = () => {
 
   return (
     <>
-      {loading && <Loading />}
       <SignUpContainer
         style={{
           width: windowWidth > 990 ? "60%" : "",

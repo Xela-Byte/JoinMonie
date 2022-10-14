@@ -73,6 +73,7 @@ const Security = () => {
     e.preventDefault();
 
     if (handleValidation()) {
+      setLoading(true);
       const headers = {
         Authorization: token,
         "Content-Type": "application/json",
@@ -87,6 +88,7 @@ const Security = () => {
       };
       await axios(resetConfig)
         .then(() => {
+          setLoading(false);
           toast.success("Password changed successfully");
         })
         .then(() => {
@@ -95,6 +97,7 @@ const Security = () => {
           }, 5000);
         })
         .catch((err) => {
+          setLoading(false);
           toast.error(err.response.data.message);
         });
     }

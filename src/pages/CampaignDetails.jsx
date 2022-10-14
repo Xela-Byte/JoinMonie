@@ -17,12 +17,14 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Person1 from "../assets/images/person-1.jpg";
 import Person2 from "../assets/images/person-2.png";
 import Person3 from "../assets/images/person-3.jpg";
-import Share from "../assets/images/script.svg";
+import Share from "../assets/images/share (1).png";
 import { useState } from "react";
 import { getSingleCampaignRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import ShareTab from "../components/ShareTab";
+import { AnimatePresence } from "framer-motion";
 
 const CampaignDetails = () => {
   // Hooks
@@ -30,6 +32,7 @@ const CampaignDetails = () => {
   const [campaign, setCampaign] = useState({});
   const [searchParams] = useSearchParams();
   const campaignId = searchParams.get("id");
+  const [showShareTab, setShowShareTab] = useState(false);
 
   // Calling the function whenever window loads.
   useEffect(() => {
@@ -87,6 +90,14 @@ const CampaignDetails = () => {
 
   return (
     <CampaignDetailContainer>
+      <AnimatePresence>
+        {showShareTab && (
+          <ShareTab
+            campaignLink={`https://join-monie.vercel.app/campaign-details?id=${campaignId}`}
+          />
+        )}
+      </AnimatePresence>
+
       <CampaignDetailHeader>
         <img src={ArrowLeft} alt="" onClick={() => navigate(-1)} />
         <p>Details</p>
@@ -140,7 +151,9 @@ const CampaignDetails = () => {
           >
             Make a donation
           </CampaignDetailDonateBtn>
-          <CampaignDetailShareBtn>
+          <CampaignDetailShareBtn
+            onClick={() => setShowShareTab(!showShareTab)}
+          >
             <img src={Share} alt="" />
           </CampaignDetailShareBtn>
         </div>
