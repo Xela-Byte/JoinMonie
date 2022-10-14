@@ -22,7 +22,9 @@ const AboutUs = () => {
         <img src={ArrowRight} alt="" onClick={() => navigate(-1)} />
         <p>About Us</p>
       </DonateHeader>
-      <p className="logo">Click on image to review details</p>
+      <p className="logo" style={{ textAlign: "center" }}>
+        Click on image to review details
+      </p>
       <div className="section-fluid-main">
         <div className="section-row">
           <div className="section-col">

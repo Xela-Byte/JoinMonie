@@ -29,7 +29,7 @@ import { AnimatePresence } from "framer-motion";
 const CampaignDetails = () => {
   // Hooks
   const navigate = useNavigate();
-  const [campaign, setCampaign] = useState({});
+  const [campaign, setCampaign] = useState([]);
   const [searchParams] = useSearchParams();
   const campaignId = searchParams.get("id");
   const [showShareTab, setShowShareTab] = useState(false);
@@ -45,33 +45,30 @@ const CampaignDetails = () => {
       };
       const getConfig = {
         method: "GET",
-        url: `${allCampaignRoute}`,
+        url: allCampaignRoute,
         headers: headers,
       };
       await axios(getConfig)
         .then((res) => {
-          const singleCampaign = res.data.campaigns.filter((campaign) => {
-            return campaign._id === campaignId;
-          });
-          setCampaign(singleCampaign);
+          setCampaign(res.data.campaigns);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
           console.log(err);
         });
-      const getDonationConfig = {
-        method: "GET",
-        url: `${allCampaignRoute}/${campaignId}/donations`,
-      };
-      await axios(getDonationConfig)
-        .then((res) => {
-          console.log(res.data);
-          setDonation(res.data);
-        })
-        .catch((err) => {
-          toast.error(err.response.data.message);
-          console.log(err);
-        });
+      // const getDonationConfig = {
+      //   method: "GET",
+      //   url: `${allCampaignRoute}/${campaignId}/donations`,
+      // };
+      // await axios(getDonationConfig)
+      //   .then((res) => {
+      //     console.log(res.data);
+      //     setDonation(res);
+      //   })
+      //   .catch((err) => {
+      //     toast.error(err.response.data.message);
+      //     console.log(err);
+      //   });
     };
     if (document.readyState === "complete") {
       getSingleCampaign();
@@ -86,24 +83,9 @@ const CampaignDetails = () => {
     }
   }, [campaignId]);
 
-  let {
-    campaignPhoto,
-    campaignName,
-    currentBalance,
-    fundsGoal,
-    email,
-    campaignStory,
-  } = campaign;
-
-  const currencySymbols = ["$"];
-
-  if (fundsGoal) {
-    if (currencySymbols.includes(fundsGoal.toString().charAt(0))) {
-      fundsGoal = fundsGoal.toString().slice(1);
-    }
-  }
-
-  let progress = (Number(currentBalance) / Number(fundsGoal)) * 100;
+  const singleCampaign = campaign.filter((campaign) => {
+    return campaign._id === campaignId;
+  });
 
   return (
     <CampaignDetailContainer>
@@ -120,61 +102,84 @@ const CampaignDetails = () => {
         <p>Details</p>
         <img src={Flag} alt="" />
       </CampaignDetailHeader>
-      <CampaignDetailContent>
-        <img src={campaignPhoto} alt="" />
-        <p>{campaignName}</p>
-        <p>{email}</p>
-        <CampaignDetailDonate>
-          <div>
-            <img src={Person1} alt={"Person"} />
-            <img src={Person3} alt={"Person"} />
-            <img src={Person2} alt={"Person"} />
-          </div>
-          <p>{donation} people donated</p>
-        </CampaignDetailDonate>
-        <CampaignDetailProgressBarContainer>
-          <CampaignDetailProgressBar
-            style={{
-              width: `${progress}%`,
-            }}
-          ></CampaignDetailProgressBar>
-        </CampaignDetailProgressBarContainer>
-        <CampaignDetailTrackContainer>
-          <CampaignDetailTrack>
-            <p>{currentBalance}</p>
-            <p>Raised</p>
-          </CampaignDetailTrack>
-          <CampaignDetailTrack>
-            <p>{fundsGoal}</p>
-            <p>Goal</p>
-          </CampaignDetailTrack>
-          <CampaignDetailTrack>
-            <p>{progress}%</p>
-            <p>Completed</p>
-          </CampaignDetailTrack>
-        </CampaignDetailTrackContainer>
-        <CampaignDetailAboutContainer>
-          <p>About Campaign</p>
-          <p>{campaignStory}</p>
-        </CampaignDetailAboutContainer>
-        <div
-          style={{
-            display: "flex",
-            gap: "10%",
-          }}
-        >
-          <CampaignDetailDonateBtn
-            onClick={() => navigate(`/donate?id=${campaignId}`)}
-          >
-            Make a donation
-          </CampaignDetailDonateBtn>
-          <CampaignDetailShareBtn
-            onClick={() => setShowShareTab(!showShareTab)}
-          >
-            <img src={Share} alt="" />
-          </CampaignDetailShareBtn>
-        </div>
-      </CampaignDetailContent>
+      {singleCampaign.map((singlecampaign) => {
+        let {
+          campaignPhoto,
+          campaignName,
+          currentBalance,
+          fundsGoal,
+          email,
+          _id,
+          campaignStory,
+        } = singlecampaign;
+
+        const currencySymbols = ["$"];
+
+        if (fundsGoal) {
+          if (currencySymbols.includes(fundsGoal.toString().charAt(0))) {
+            fundsGoal = fundsGoal.toString().slice(1);
+          }
+        }
+
+        let progress = (Number(currentBalance) / Number(fundsGoal)) * 100;
+        return (
+          <CampaignDetailContent key={_id}>
+            <img src={campaignPhoto} alt="" />
+            <p>{campaignName}</p>
+            <p>{email}</p>
+            <CampaignDetailDonate>
+              <div>
+                <img src={Person1} alt={"Person"} />
+                <img src={Person3} alt={"Person"} />
+                <img src={Person2} alt={"Person"} />
+              </div>
+              <p>{donation} people donated</p>
+            </CampaignDetailDonate>
+            <CampaignDetailProgressBarContainer>
+              <CampaignDetailProgressBar
+                style={{
+                  width: `${progress}%`,
+                }}
+              ></CampaignDetailProgressBar>
+            </CampaignDetailProgressBarContainer>
+            <CampaignDetailTrackContainer>
+              <CampaignDetailTrack>
+                <p>{currentBalance}</p>
+                <p>Raised</p>
+              </CampaignDetailTrack>
+              <CampaignDetailTrack>
+                <p>{fundsGoal}</p>
+                <p>Goal</p>
+              </CampaignDetailTrack>
+              <CampaignDetailTrack>
+                <p>{progress}%</p>
+                <p>Completed</p>
+              </CampaignDetailTrack>
+            </CampaignDetailTrackContainer>
+            <CampaignDetailAboutContainer>
+              <p>About Campaign</p>
+              <p>{campaignStory}</p>
+            </CampaignDetailAboutContainer>
+            <div
+              style={{
+                display: "flex",
+                gap: "10%",
+              }}
+            >
+              <CampaignDetailDonateBtn
+                onClick={() => navigate(`/donate?id=${campaignId}`)}
+              >
+                Make a donation
+              </CampaignDetailDonateBtn>
+              <CampaignDetailShareBtn
+                onClick={() => setShowShareTab(!showShareTab)}
+              >
+                <img src={Share} alt="" />
+              </CampaignDetailShareBtn>
+            </div>
+          </CampaignDetailContent>
+        );
+      })}
     </CampaignDetailContainer>
   );
 };

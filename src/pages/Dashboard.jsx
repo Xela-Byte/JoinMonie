@@ -6,8 +6,6 @@ import {
   DashboardHeader,
   DashboardLogoContainer,
   DashboardNotify,
-  DashboardSearch,
-  DashboardSearchContainer,
   ProgressBar,
   ProgressBarContainer,
   TrendingCampaignContainer,
@@ -18,7 +16,6 @@ import {
 import Menu from "../assets/images/menu.png";
 import Logo from "../assets/images/logo.svg";
 import Bell from "../assets/images/bell.png";
-import Search from "../assets/images/search (2).png";
 import Hands from "../assets/images/hands.jpg";
 import FooterNav from "../components/FooterNav";
 import { useState } from "react";
@@ -85,10 +82,6 @@ const Dashboard = () => {
     return !notTrending.includes(index);
   });
 
-  // const searchCampaigns = (keyword) => {
-
-  // }
-
   return (
     <>
       {showNavbar && <Navbar />}
@@ -102,10 +95,7 @@ const Dashboard = () => {
             <img src={Bell} alt="" />
           </DashboardNotify>
         </DashboardHeader>
-        <DashboardSearchContainer>
-          <img src={Search} alt="" />
-          <DashboardSearch type={"text"} placeholder="Search Campaigns" />
-        </DashboardSearchContainer>
+
         <CampaignStarter>
           <img src={Hands} alt="" />
           <CampaignStarterContent>
