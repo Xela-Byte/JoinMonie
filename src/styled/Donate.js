@@ -58,6 +58,7 @@ export const DonateMethodTab = styled.div`
   ${Centering}
   margin-left: 50%;
   margin-top: 10%;
+  cursor: pointer;
   flex-direction: column;
   & > img {
     width: 50%;
@@ -75,6 +76,12 @@ export const DonateBtn = styled.div`
   padding: 10px;
   border-radius: 15px;
   font-size: 16px;
+  cursor: pointer;
+  @media screen and (min-width: 991px) {
+    width: 45%;
+    margin: auto;
+    margin-top: 10%;
+  }
 `;
 
 export const DonateAmountContainer = styled.div`
@@ -84,6 +91,10 @@ export const DonateAmountContainer = styled.div`
     margin: 7%;
     font-size: 14px;
     text-align: center;
+  }
+  @media screen and (min-width: 991px) {
+    height: auto;
+    padding-bottom: 5%;
   }
 `;
 
@@ -95,6 +106,7 @@ export const DonateAmountTab = styled.div`
   padding: 10px;
   border-radius: 15px;
   font-size: 16px;
+  cursor: pointer;
   margin: auto;
 `;
 
@@ -103,6 +115,7 @@ export const DonateAmountNumberContainer = styled.div`
   height: 10%;
   margin: auto;
   padding-top: 5%;
+  padding-bottom: 5%;
   gap: 25%;
   display: flex;
 `;
@@ -112,6 +125,8 @@ export const DonateAmountNumber = styled.div`
   height: 50px;
   ${Centering}
   border-radius: 50%;
+  cursor: pointer;
+
   background: rgba(7, 7, 224, 0.15);
   &:last-child {
     margin: auto;
@@ -126,5 +141,10 @@ export const DonateMakeBtn = styled.div`
   background: ${colors.blue};
   padding: 10px;
   border-radius: 15px;
+  cursor: pointer;
   font-size: 16px;
+  @media screen and (min-width: 991px) {
+    margin: auto;
+    width: 50%;
+  }
 `;

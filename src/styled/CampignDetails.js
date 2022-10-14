@@ -9,6 +9,10 @@ export const CampaignDetailContainer = styled.div`
   padding-top: 10%;
   padding-left: 15px;
   padding-right: 15px;
+  @media screen and (min-width: 991px) {
+    width: 50%;
+    margin: auto;
+  }
 `;
 
 export const CampaignDetailHeader = styled.div`
@@ -23,8 +27,8 @@ export const CampaignDetailHeader = styled.div`
     color: ${colors.blue};
   }
   & > img {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     margin-bottom: 2%;
   }
   & > img:last-child {
@@ -32,6 +36,12 @@ export const CampaignDetailHeader = styled.div`
     height: 25px;
     transform: rotate(0deg);
     margin-bottom: 2%;
+  }
+  @media screen and (min-width: 991px) {
+    gap: 40%;
+    & > p {
+      font-size: 4vh;
+    }
   }
 `;
 
@@ -142,6 +152,7 @@ export const CampaignDetailDonateBtn = styled.div`
   ${Centering}
   text-align: center;
   font-size: 16px;
+  cursor: pointer;
   border-radius: 10px;
 `;
 
@@ -150,6 +161,7 @@ export const CampaignDetailShareBtn = styled.div`
   ${Centering}
   background: rgba(7, 7, 224, 0.15);
   border-radius: 10px;
+  cursor: pointer;
   padding: 15px;
   & > img {
     width: 25px;
