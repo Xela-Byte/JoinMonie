@@ -144,6 +144,7 @@ export const CreateCampaignSucessContainer = styled.div`
   width: 100%;
   height: 100vh;
   position: absolute;
+  ${Centering}
   background: transparent;
   z-index: 6;
   backdrop-filter: blur(2px);
@@ -162,6 +163,10 @@ export const CreateCampaignSucess = styled.div`
   background: ${colors.white};
   box-shadow: -5px 5px 10px #c5c5c5, 10px -10px 17px #fbfbfb;
   z-index: 6;
+  @media screen and (min-width: 991px) {
+    width: 40%;
+    margin-left: 25%;
+  }
 `;
 
 export const CreateCampaignSuccessIcon = styled.div`

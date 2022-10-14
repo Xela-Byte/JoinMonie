@@ -20,12 +20,36 @@ import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { token } from "../utils/Credentials";
+import { toast } from "react-toastify";
+import moment from "moment";
+
+moment.updateLocale("en", {
+  relativeTime: {
+    future: "%s left",
+    past: "%s ago",
+    s: "a few seconds",
+    ss: "%d seconds",
+    m: "a minute",
+    mm: "%d minutes",
+    h: "1 hour ago", //this is the setting that you need to change
+    hh: "%d hours",
+    d: "a day",
+    dd: "%d days",
+    w: "a week",
+    ww: "%d weeks",
+    M: "1 month ago", //change this for month
+    MM: "%d months",
+    y: "a year",
+    yy: "%d years",
+  },
+});
 
 const ViewCampaignProgress = () => {
   //  Hooks
   const [searchParams] = useSearchParams();
   const campaignId = searchParams.get("id");
   const [campaign, setCampaign] = useState([]);
+  const [donation, setDonation] = useState(0);
   const navigate = useNavigate();
 
   // Getting Camapign Info
@@ -47,6 +71,19 @@ const ViewCampaignProgress = () => {
           setCampaign(singleCampaign);
         })
         .catch((err) => {
+          console.log(err);
+        });
+      const getDonationConfig = {
+        method: "GET",
+        url: `${allCampaignRoute}/${campaignId}/donations`,
+      };
+      await axios(getDonationConfig)
+        .then((res) => {
+          // console.log(res.data);
+          setDonation(res.data.data);
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
           console.log(err);
         });
     };
@@ -72,6 +109,7 @@ const ViewCampaignProgress = () => {
           campaignStory,
           currentBalance,
           fundsGoal,
+          endDate,
           _id,
         } = campaignInfo;
         const currencySymbols = ["$"];
@@ -106,10 +144,10 @@ const ViewCampaignProgress = () => {
                 <img src={Fire} alt="" />
                 <img src={Fire} alt="" />
               </ViewProgressDonatedAvatar>
-              <p>123+ donated</p>
+              <p>{donation} donated</p>
             </ViewProgressDonated>
             <ViewProgressDate>
-              <ViewProgressDay>3 days left</ViewProgressDay>
+              <ViewProgressDay>{moment(endDate).fromNow()}</ViewProgressDay>
               <ViewProgressExtendBtn
                 onClick={() => navigate(`/extendCampaign?id=${campaignId}`)}
               >

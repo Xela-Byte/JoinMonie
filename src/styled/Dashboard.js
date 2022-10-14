@@ -23,6 +23,7 @@ export const DashboardHeader = styled.div`
   }
   @media screen and (min-width: 991px) {
     margin-top: 0%;
+    margin-bottom: 5%;
   }
 `;
 
@@ -44,40 +45,6 @@ export const DashboardNotify = styled.div`
     width: 30px;
     height: 30px;
     cursor: pointer;
-  }
-`;
-
-export const DashboardSearchContainer = styled.div`
-  width: 100%;
-  padding-top: 5%;
-  padding-bottom: 10%;
-  ${Centering}
-  position: relative;
-  & > img {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    left: 10%;
-  }
-  @media screen and (min-width: 991px) {
-    width: 85%;
-    margin: auto;
-    padding-top: 2%;
-    padding-bottom: 5%;
-  }
-`;
-
-export const DashboardSearch = styled.input`
-  width: 95%;
-  padding: 1rem;
-  padding-left: 15%;
-  outline: none;
-  border: none;
-  font-size: 16px;
-  border-radius: 15px;
-  box-shadow: -5px 5px 10px #c5c5c5, 10px -10px 17px #fbfbfb;
-  &::placeholder {
-    color: ${colors.blue};
   }
 `;
 
