@@ -81,18 +81,21 @@ const Donate = () => {
         .then((res) => {
           if (res.data.success === true) {
             const refConfig = {
-              method: "POST",
+              method: "GET",
               url: `https://joinmonie.herokuapp.com/paystack/callback`,
               headers: headers,
               data: {
                 ref: res.data.reference,
               },
             };
-            axios.post(refConfig).then((res) => {
-              console.log(res.data);
-            }).catch((err) => {
-              console.log(err);
-            })
+            axios
+              .post(refConfig)
+              .then((res) => {
+                console.log(res.data);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         })
         .catch((err) => {

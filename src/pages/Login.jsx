@@ -121,10 +121,13 @@ const Login = () => {
               onChange={(e) => handleChange(e)}
               onClick={(e) => handleAutoFill(e)}
             />
+            <p style={{ marginTop: "5%" }}>
+              Forgot password? <Link to={"/forgot-password"}>Reset </Link>
+            </p>
           </SignUpInputContainer>
+
           <SignUpBtn type="submit" onClick={() => setIsLoading(true)}>
-            {" "}
-            Login{" "}
+            Login
           </SignUpBtn>
         </SignUpForm>
         <ReferralText style={{ marginTop: windowWidth < 990 ? "-20%" : "" }}>

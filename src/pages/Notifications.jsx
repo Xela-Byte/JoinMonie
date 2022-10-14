@@ -77,6 +77,13 @@ const Notifications = () => {
     }
   }, []);
 
+  const oldNotification = notifications.filter((notification) => {
+    let { createdAt } = notification;
+    let notifyDate = moment(createdAt).utc().format("YYYY-MM-DD hh:mm:ss");
+    notifyDate = moment(notifyDate).fromNow();
+    return notifyDate.includes("day") || notifyDate.includes("days");
+  });
+
   const newNotification = notifications.filter((notification) => {
     let { createdAt } = notification;
     let notifyDate = moment(createdAt).utc().format("YYYY-MM-DD hh:mm:ss");
@@ -109,7 +116,7 @@ const Notifications = () => {
       </NewNotificationContainer>
       <OldNotificationContainer>
         <p>Old</p>
-        {notifications.map((notification, index) => {
+        {oldNotification.map((notification, index) => {
           let { _id, message, createdAt } = notification;
 
           return (

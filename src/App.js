@@ -25,6 +25,8 @@ import NotFound from "./pages/NotFound";
 import CreateCampaignEmailInputComponent from "./components/CreateCampaignEmailInputComponent";
 import "./utils/Credentials";
 import ViewCampaignProgress from "./pages/ViewCampaignProgress";
+import AboutUs from "./pages/AboutUs";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<SignUp />} />
         <Route path="set-password" element={<Password />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="upload-image" element={<UploadImage />} />
         <Route index path="dashboard" element={<Dashboard />} />
         <Route index path="explore" element={<Explore />} />
@@ -60,6 +63,7 @@ const App = () => {
         <Route path="notifications" element={<Notifications />} />
         <Route path="how-it-works" element={<HowItWorks />} />
         <Route path="trust-and-safety" element={<TrustAndSafety />} />
+        <Route path="about-us" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

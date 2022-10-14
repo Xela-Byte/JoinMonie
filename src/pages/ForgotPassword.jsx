@@ -18,13 +18,13 @@ import useGetWindowSize from "../hooks/useWindowSize";
 import { token } from "../utils/Credentials";
 import Loading from "../components/Loading";
 
-const Security = () => {
+const ForgotPassword = () => {
   // ******** //
   // Set Password```//
   //********* //
 
   //  Title for the page
-  document.title = "JoinMonie | Set Security";
+  document.title = "JoinMonie | Forgot Password";
 
   // Hooks
   const navigate = useNavigate();
@@ -108,6 +108,7 @@ const Security = () => {
       <SignUpContainer
         style={{
           width: windowWidth > 990 ? "60%" : "",
+          margin: windowWidth > 990 ? "auto" : "",
         }}
       >
         <SignUpForm onSubmit={(e) => handleSubmit(e)}>
@@ -117,7 +118,7 @@ const Security = () => {
             }}
           >
             <img src={ArrowRight} onClick={() => navigate(-1)} alt="" />
-            <p>Security</p>
+            <p>Reset Password</p>
           </SecurityHeader>
           <SignUpInputContainer>
             <label htmlFor="password">Password</label>
@@ -132,7 +133,7 @@ const Security = () => {
               alt=""
               onClick={() => handlePasswordReveal()}
             />
-            <p>Must be at least 8 characters.</p>
+            <p>Must be at least 8 characters .</p>
           </SignUpInputContainer>
           <SignUpInputContainer>
             <label htmlFor="confirm-password">Confirm Password</label>
@@ -159,7 +160,7 @@ const Security = () => {
 
             <p>Both passwords must match!</p>
           </SignUpInputContainer>
-          <SignUpBtn type="submit">Save</SignUpBtn>
+          <SignUpBtn type="submit">Reset</SignUpBtn>
         </SignUpForm>
         <ToastContainer />
       </SignUpContainer>
@@ -167,4 +168,4 @@ const Security = () => {
   );
 };
 
-export default Security;
+export default ForgotPassword;
