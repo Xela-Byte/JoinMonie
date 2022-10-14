@@ -33,7 +33,12 @@ const Navbar = () => {
             <p>how it works</p>
             <NavbarIcon src={ArrowRight} alt="" />
           </NavbarTab>
-          <NavbarTab onClick={() => navigate("/trust-and-safety")}>
+          <NavbarTab
+            onClick={() =>
+              (window.location.href =
+                "https://docs.google.com/document/d/14XamWgYw4Np851EdITLUfqqBDhgxRiTeITkRENtQK-o/edit")
+            }
+          >
             <NavbarTabIconContainer>
               <img src={Warning} alt="" />
             </NavbarTabIconContainer>

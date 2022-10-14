@@ -56,19 +56,19 @@ const CampaignDetails = () => {
           toast.error(err.response.data.message);
           console.log(err);
         });
-      // const getDonationConfig = {
-      //   method: "GET",
-      //   url: `${allCampaignRoute}/${campaignId}/donations`,
-      // };
-      // await axios(getDonationConfig)
-      //   .then((res) => {
-      //     console.log(res.data);
-      //     setDonation(res);
-      //   })
-      //   .catch((err) => {
-      //     toast.error(err.response.data.message);
-      //     console.log(err);
-      //   });
+      const getDonationConfig = {
+        method: "GET",
+        url: `${allCampaignRoute}/${campaignId}/donations`,
+      };
+      await axios(getDonationConfig)
+        .then((res) => {
+          // console.log(res.data);
+          setDonation(res.data.data);
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          console.log(err);
+        });
     };
     if (document.readyState === "complete") {
       getSingleCampaign();

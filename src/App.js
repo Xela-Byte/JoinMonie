@@ -18,7 +18,6 @@ import Donate from "./pages/Donate";
 import FAQ from "./pages/FAQ";
 import Notifications from "./pages/Notifications";
 import HowItWorks from "./pages/HowItWorks";
-import TrustAndSafety from "./pages/TrustAndSafety";
 import DonateSuccess from "./components/DonateSuccess";
 import ScrollToTop from "./utils/ScrollToTop";
 import NotFound from "./pages/NotFound";
@@ -68,7 +67,6 @@ const App = () => {
         <Route path="notifications" element={<Notifications />} />
         <Route path="how-it-works" element={<HowItWorks />} />
         <Route path="how-to-report" element={<ReportCampaign />} />
-        <Route path="trust-and-safety" element={<TrustAndSafety />} />
         <Route path="about-us" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
