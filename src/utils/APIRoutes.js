@@ -1,4 +1,4 @@
-export const host = "https://joinmonie.herokuapp.com/v1";
+export const host = "https://joinmonie.onrender.com/v1";
 
 export const registerRoute = `${host}/register`;
 export const loginRoute = `${host}/login`;
